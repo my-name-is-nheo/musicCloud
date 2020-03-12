@@ -9,6 +9,10 @@ console.log(__dirname);
 app.use(express.static(path.join(__dirname, "../client/dist")));
 app.use(express.urlencoded({ extended: true }));
 
+app.get("/play", (req, res) => {
+  console.log("received get request from playbutton");
+});
+
 app.listen(port, function() {
   console.log(`listening on port ${port}!`);
 });
