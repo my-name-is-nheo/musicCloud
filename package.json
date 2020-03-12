@@ -1,17 +1,40 @@
 {
-  "name": "",
-  "version": "",
-  "description": "",
-  "author": "",
-  "license": "",
+  "name": "fec-service-nick",
+  "description": "> Project description",
+  "author": "Nicholas Heo",
+  "license": "ISC",
   "engines": {
     "node": ">=6.13.0"
   },
   "scripts": {
+    "build": "webpack --config webpack.config.js --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/app.js"
   },
   "dependencies": {
+    "express": "^4.17.1",
+    "jquery": "^3.4.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.2",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
-  }
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/preset-react": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
+    "webpack": "^2.7.0"
+  },
+  "version": "1.0.0",
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FEC-group-Zelda/fec-service-nick.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FEC-group-Zelda/fec-service-nick/issues"
+  },
+  "homepage": "https://github.com/FEC-group-Zelda/fec-service-nick#readme"
 }
