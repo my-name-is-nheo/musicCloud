@@ -12,6 +12,7 @@ Insert into songList (music_title, artist_name, album_cover, music_url) values (
 
 Insert into songList (music_title, artist_name, album_cover, music_url) values ("07 - Don't Stop Me Now.mp3", "Queens","https://my-music-lists.s3.amazonaws.com/00-queen.jpg","https://my-music-lists.s3.amazonaws.com/07+-+Don't+Stop+Me+Now.mp3");
 
+
 Insert into songList (music_title, artist_name, album_cover, music_url) values ("08 - Save Me.mp3", "Queens","https://my-music-lists.s3.amazonaws.com/00-queen.jpg","https://my-music-lists.s3.amazonaws.com/08+-+Save+Me.mp3");
 
 Insert into songList (music_title, artist_name, album_cover, music_url) values ("09 - Crazy Little Thing Called Love.mp3", "Queens","https://my-music-lists.s3.amazonaws.com/00-queen.jpg","https://my-music-lists.s3.amazonaws.com/09+-+Crazy+Little+Thing+Called+Love.mp3");
