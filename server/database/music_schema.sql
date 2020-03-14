@@ -4,9 +4,11 @@ USE music;
 
 CREATE TABLE songList (
 
-  music_id int NOT NULL AUTO_INCREMENT,
-  music_title varchar(100) NOT NULL,
-  artist_name varchar(100) NOT NULL,
-  album_cover varchar(250) NOT NULL,
-  PRIMARY KEY (music_id)
+  id INTEGER AUTO_INCREMENT,
+  music_title VARCHAR(100) NOT NULL,
+  artist_name VARCHAR(100) NOT NULL,
+  album_cover VARCHAR(250) NOT NULL,
+  music_url VARCHAR(300) NOT NULL,
+  PRIMARY KEY (id)
 );
+

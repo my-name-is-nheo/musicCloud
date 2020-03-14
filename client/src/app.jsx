@@ -41,6 +41,12 @@ class App extends React.Component {
     // };
     return (
       <div id="mini-player">
+        <audio autoPlay="autoplay">
+          <source
+            src="https://my-music-lists.s3.amazonaws.com/17+-+We+Are+The+Champions.mp3"
+            type="audio/mpeg"
+          />
+        </audio>
         <div id="previous-div">
           {" "}
           <button
