@@ -7,8 +7,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       selected:
-        "https://my-music-lists.s3.amazonaws.com/01+-+Bohemian+Rhapsody.mp3",
-      auto: true
+        "https://my-music-lists.s3.amazonaws.com/01+-+Bohemian+Rhapsody.mp3"
+      // auto: true
     };
   }
 
@@ -28,10 +28,16 @@ class App extends React.Component {
   }
   play_pause() {
     console.log("clicked play/pause button");
-    this.setState({ auto: !this.state.auto });
-    console.log(this.state.auto);
-  }
+    // this.setState({ auto: !this.state.auto });
+    // console.log(this.state.auto);
+    var myAudio = document.getElementById("myAudio");
+    console.log(myAudio);
 
+    function toggle() {
+      return myAudio.paused ? myAudio.play() : myAudio.pause();
+    }
+    toggle();
+  }
   next() {
     console.log("clicked next button");
   }
@@ -62,8 +68,8 @@ class App extends React.Component {
     return (
       <div id="mini-player">
         <audio
-          id="myaudio"
-          autoPlay={true}
+          id="myAudio"
+          autoPlay="autoplay"
           src={this.state.selected}
           type="audio/mpeg"
         ></audio>
@@ -87,7 +93,9 @@ class App extends React.Component {
         </div>
         <div id="next-div">
           {" "}
-          <button className="next-button">Next</button>
+          <button className="next-button" onClick={this.next.bind(this)}>
+            Next
+          </button>
         </div>
         <div id="shuffle-div">
           {" "}
