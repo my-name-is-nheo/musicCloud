@@ -5,21 +5,31 @@ import $ from "jquery";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      selected:
+        "https://my-music-lists.s3.amazonaws.com/01+-+Bohemian+Rhapsody.mp3",
+      auto: true
+    };
   }
 
   previous() {
     console.log("clicked previous button");
-    $.ajax({
-      type: "GET",
-      url: "http://localhost:4000/play",
-      success: () => {
-        console.log("successfully sent get request with previous button");
-      }
-    });
+
+    // $.ajax({
+    //   type: "GET",
+    //   url: "http://localhost:4000/play",
+    //   success: data => {
+    //     console.log(data);
+    //     console.log("successfully sent get request with previous button");
+    //     this.setState("" + data);
+    //     console.log(this.state.selected + " this is selected");
+    //   }
+    // });
   }
   play_pause() {
     console.log("clicked play/pause button");
+    this.setState({ auto: !this.state.auto });
+    console.log(this.state.auto);
   }
 
   next() {
@@ -28,6 +38,16 @@ class App extends React.Component {
 
   shuffle() {
     console.log("clicked shuffle button");
+    console.log("clicked previous button");
+    $.ajax({
+      type: "GET",
+      url: "http://localhost:4000/shuffle",
+      success: data => {
+        console.log(data);
+        console.log("successfully sent get request with previous button");
+        this.setState({ selected: data[0].music_url });
+      }
+    });
   }
   repeat() {
     console.log("clicked repeat button");
@@ -41,12 +61,12 @@ class App extends React.Component {
     // };
     return (
       <div id="mini-player">
-        <audio autoPlay="autoplay">
-          <source
-            src="https://my-music-lists.s3.amazonaws.com/17+-+We+Are+The+Champions.mp3"
-            type="audio/mpeg"
-          />
-        </audio>
+        <audio
+          id="myaudio"
+          autoPlay={true}
+          src={this.state.selected}
+          type="audio/mpeg"
+        ></audio>
         <div id="previous-div">
           {" "}
           <button
@@ -58,7 +78,12 @@ class App extends React.Component {
         </div>
         <div id="play-pause-div">
           {" "}
-          <button className="playPause-button">Play/Pause</button>
+          <button
+            className="playPause-button"
+            onClick={this.play_pause.bind(this)}
+          >
+            Play/Pause
+          </button>
         </div>
         <div id="next-div">
           {" "}
@@ -66,7 +91,9 @@ class App extends React.Component {
         </div>
         <div id="shuffle-div">
           {" "}
-          <button className="shuffle-button">Shuffle</button>
+          <button className="shuffle-button" onClick={this.shuffle.bind(this)}>
+            Shuffle
+          </button>
         </div>
 
         <div id="repeat-div">
