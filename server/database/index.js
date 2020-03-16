@@ -2,7 +2,7 @@ const mysql = require("mysql");
 
 var dbConnection = mysql.createConnection({
   user: "root",
-  database: "notSoundCloud"
+  database: "music"
 });
 
 dbConnection.connect();
