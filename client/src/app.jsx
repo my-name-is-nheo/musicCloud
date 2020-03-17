@@ -80,6 +80,11 @@ class App extends React.Component {
   }
   repeat() {
     console.log("clicked repeat button");
+    if (!document.getElementById("myAudio").loop) {
+      document.getElementById("myAudio").loop = true;
+    } else {
+      document.getElementById("myAudio").loop = false;
+    }
   }
 
   render() {
