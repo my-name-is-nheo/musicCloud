@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import $ from "jquery";
+import HoverMenu from "./components/HoverMenu.jsx";
 
 class App extends React.Component {
   constructor(props) {
@@ -8,7 +9,9 @@ class App extends React.Component {
     this.state = {
       selected: "",
       playList: [],
-      trackNumber: 0
+      trackNumber: 0,
+      displayList: false,
+      favorites: []
     };
   }
 
@@ -22,7 +25,7 @@ class App extends React.Component {
           playList: data,
           selected: data[0].music_url
         });
-        console.log(this.state.playList);
+        // console.log(this.state.playList);
       }
     });
   }
@@ -32,6 +35,7 @@ class App extends React.Component {
     console.log(this.state.trackNumber);
     console.log(this.state.playList);
     if (this.state.trackNumber === 0) {
+      // compare playlist length to track number and reset.
       this.setState({ trackNumber: 16 });
     }
 
@@ -63,18 +67,30 @@ class App extends React.Component {
       trackNumber: this.state.trackNumber + 1
     });
     var myAudio = document.getElementById("myAudio");
-    console.log(myAudio.paused);
+    // console.log(myAudio.paused);
+    // console.log(this.state.selected);
     myAudio.pause();
     // myAudio.load();
     return myAudio.play();
-    console.log(this.state.selected);
   }
 
   shuffle() {
     console.log("clicked shuffle button");
-    var randomizer = Math.floor(Math.random() * this.state.playList.length);
-    console.log(randomizer);
-    this.setState({ selected: this.state.playList[randomizer].music_url });
+    var playList = this.state.playList;
+    var shuffle = playList.sort(func);
+    function func(a, b) {
+      return 0.5 - Math.random();
+    }
+    console.log(shuffle);
+
+    // var randomizer = Math.floor(Math.random() * this.state.playList.length);
+    // console.log(randomizer);
+    this.setState({
+      playList: shuffle,
+      selected: this.state.playList[this.state.trackNumber].music_url
+    });
+    console.log(this.state.trackNumber);
+    console.log(this.state.playList);
     console.log(this.state.selected);
     return myAudio.paused ? myAudio.play() : myAudio.pause();
   }
@@ -85,6 +101,15 @@ class App extends React.Component {
     } else {
       document.getElementById("myAudio").loop = false;
     }
+  }
+
+  addToFav() {
+    var addThis = this.state.selected;
+    console.log(addThis);
+  }
+
+  showList() {
+    this.setState({ displayList: !this.state.displayList });
   }
 
   render() {
@@ -134,10 +159,36 @@ class App extends React.Component {
         </div>
 
         <div id="repeat-div">
-          {" "}
           <button className="repeat-button" onClick={this.repeat.bind(this)}>
             Repeat
           </button>
+          <div>
+            <div id="favorite-div">
+              <button
+                onClick={this.addToFav.bind(this)}
+                className="favorite-button"
+              >
+                Favorite
+              </button>
+            </div>
+            <div id="playList-div">
+              <button
+                onClick={this.showList.bind(this)}
+                className="playList-button"
+              >
+                PlayList
+              </button>
+              {this.state.displayList && (
+                <div>
+                  {" "}
+                  <HoverMenu
+                    playList={this.state.playList}
+                    selected={this.state.selected}
+                  />
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     );
