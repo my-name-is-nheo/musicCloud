@@ -6,54 +6,59 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected:
-        "https://my-music-lists.s3.amazonaws.com/01+-+Bohemian+Rhapsody.mp3"
-      // auto: true
+      selected: "",
+      playList: [],
+      trackNumber: 0
     };
+  }
+
+  componentDidMount() {
+    $.ajax({
+      type: "GET",
+      url: "http://localhost:4000/getList",
+      success: data => {
+        console.log(" this is data from client ", data);
+        this.setState({
+          playList: data,
+          selected: data[0].music_url
+        });
+        console.log(this.state.playList);
+      }
+    });
   }
 
   previous() {
     console.log("clicked previous button");
-
-    // $.ajax({
-    //   type: "GET",
-    //   url: "http://localhost:4000/play",
-    //   success: data => {
-    //     console.log(data);
-    //     console.log("successfully sent get request with previous button");
-    //     this.setState("" + data);
-    //     console.log(this.state.selected + " this is selected");
-    //   }
-    // });
+    console.log(this.state.playList);
   }
+
   play_pause() {
     console.log("clicked play/pause button");
-    // this.setState({ auto: !this.state.auto });
-    // console.log(this.state.auto);
-    var myAudio = document.getElementById("myAudio");
-    console.log(myAudio);
+    var myAudio = document.getElementById("myAudio"); // re-usability problem .. only one ID with audio so it should be fine.. for now.
 
-    function toggle() {
-      return myAudio.paused ? myAudio.play() : myAudio.pause();
-    }
-    toggle();
+    return myAudio.paused ? myAudio.play() : myAudio.pause();
   }
   next() {
     console.log("clicked next button");
+    this.setState({
+      selected: this.state.playList[this.state.trackNumber + 1].music_url,
+      trackNumber: this.state.trackNumber + 1
+    });
+    var myAudio = document.getElementById("myAudio");
+    console.log(myAudio.paused);
+    myAudio.pause();
+    // myAudio.load();
+    return myAudio.play();
+    console.log(this.state.selected);
   }
 
   shuffle() {
     console.log("clicked shuffle button");
-    console.log("clicked previous button");
-    $.ajax({
-      type: "GET",
-      url: "http://localhost:4000/shuffle",
-      success: data => {
-        console.log(data);
-        console.log("successfully sent get request with previous button");
-        this.setState({ selected: data[0].music_url });
-      }
-    });
+    var randomizer = Math.floor(Math.random() * this.state.playList.length);
+    console.log(randomizer);
+    this.setState({ selected: this.state.playList[randomizer].music_url });
+    console.log(this.state.selected);
+    return myAudio.paused ? myAudio.play() : myAudio.pause();
   }
   repeat() {
     console.log("clicked repeat button");
@@ -69,9 +74,10 @@ class App extends React.Component {
       <div id="mini-player">
         <audio
           id="myAudio"
-          autoPlay="autoplay"
           src={this.state.selected}
-          type="audio/mpeg"
+          // type="audio/mpeg"
+          preload="auto"
+          autoPlay
         ></audio>
         <div id="previous-div">
           {" "}
@@ -106,7 +112,9 @@ class App extends React.Component {
 
         <div id="repeat-div">
           {" "}
-          <button className="repeat-button">Repeat</button>
+          <button className="repeat-button" onClick={this.repeat.bind(this)}>
+            Repeat
+          </button>
         </div>
       </div>
     );
