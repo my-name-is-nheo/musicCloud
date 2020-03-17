@@ -1,11 +1,11 @@
 var db = require("../database");
 module.exports = {
   songs: {
-    shuffle: callback => {
-      var queryString =
-        "select music_url from songList order by rand() limit 1";
+    getPlaylist: callback => {
+      var queryString = "select * from songList";
       // randomize the sqlChart.
       return db.query(queryString, function(err, results) {
+        console.log(` this is results in model ` + results);
         if (err) {
           throw err;
         }
