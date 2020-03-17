@@ -29,7 +29,21 @@ class App extends React.Component {
 
   previous() {
     console.log("clicked previous button");
+    console.log(this.state.trackNumber);
     console.log(this.state.playList);
+    if (this.state.trackNumber === 0) {
+      this.setState({ trackNumber: 16 });
+    }
+
+    this.setState({
+      selected: this.state.playList[this.state.trackNumber - 1].music_url,
+      trackNumber: this.state.trackNumber - 1
+    });
+    var myAudio = document.getElementById("myAudio");
+    console.log(myAudio.paused);
+    myAudio.pause();
+    // myAudio.load();
+    return myAudio.play();
   }
 
   play_pause() {
@@ -39,7 +53,11 @@ class App extends React.Component {
     return myAudio.paused ? myAudio.play() : myAudio.pause();
   }
   next() {
+    if (this.state.trackNumber === 16) {
+      this.setState({ trackNumber: 0 });
+    }
     console.log("clicked next button");
+    console.log(this.state.trackNumber);
     this.setState({
       selected: this.state.playList[this.state.trackNumber + 1].music_url,
       trackNumber: this.state.trackNumber + 1
