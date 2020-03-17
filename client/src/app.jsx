@@ -103,11 +103,6 @@ class App extends React.Component {
     }
   }
 
-  addToFav() {
-    var addThis = this.state.selected;
-    console.log(addThis);
-  }
-
   showList() {
     this.setState({ displayList: !this.state.displayList });
   }
@@ -163,14 +158,6 @@ class App extends React.Component {
             Repeat
           </button>
           <div>
-            <div id="favorite-div">
-              <button
-                onClick={this.addToFav.bind(this)}
-                className="favorite-button"
-              >
-                Favorite
-              </button>
-            </div>
             <div id="playList-div">
               <button
                 onClick={this.showList.bind(this)}
