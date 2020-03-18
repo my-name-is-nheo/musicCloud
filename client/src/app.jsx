@@ -10,7 +10,8 @@ class App extends React.Component {
       selected: "",
       playList: [],
       trackNumber: 0,
-      displayList: false
+      displayList: false,
+      displayVolume: false
     };
   }
   //=============================================================================================================================================================================
@@ -136,7 +137,10 @@ class App extends React.Component {
     // myAudio.volume = myAudio.volume;
     // console.log("After: " + myAudio.volume);
   }
-
+  //=============================================================================================================================================================================
+  displayVolume() {
+    this.setState({ displayVolume: !this.state.displayVolume });
+  }
   render() {
     // const styles = {
     //   main: {
@@ -196,14 +200,27 @@ class App extends React.Component {
         </span>
         <small id="start-time"></small>
         <small id="end-time"></small>
-        <input
-          id="vol-control"
-          type="range"
-          min="0"
-          max="100"
-          step="1"
-          onChange={this.volumeBar.bind(this)}
-        ></input>
+        <div id="volume-div">
+          <button
+            onClick={this.displayVolume.bind(this)}
+            className="volume-button"
+          >
+            Volume
+          </button>
+          {this.state.displayVolume && (
+            <div>
+              {" "}
+              <input
+                id="vol-control"
+                type="range"
+                min="0"
+                max="100"
+                step="1"
+                onChange={this.volumeBar.bind(this)}
+              ></input>
+            </div>
+          )}
+        </div>
         <div id="playList-div">
           <button
             onClick={this.showList.bind(this)}
