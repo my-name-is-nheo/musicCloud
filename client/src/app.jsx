@@ -135,7 +135,7 @@ class App extends React.Component {
     console.log(myAudio.paused);
     return myAudio.paused ? this.pauseAudio() : this.playAudio();
   }
-  //============SHUFFLE BUTTON
+  //========================SHUFFLE BUTTON
   shuffle() {
     console.log("clicked shuffle button");
     var playList = this.state.playList;
@@ -159,7 +159,7 @@ class App extends React.Component {
     // console.log(this.state.selected);
     return myAudio.paused ? myAudio.play() : myAudio.pause();
   }
-  //=====================REPEAT BUTTON
+  //=========================REPEAT BUTTON
   repeat() {
     console.log("clicked repeat button");
     if (!document.getElementById("myAudio").loop) {
@@ -172,7 +172,7 @@ class App extends React.Component {
   showList() {
     this.setState({ displayList: !this.state.displayList });
   }
-  //===================PROGRESS BAR
+  //==========================PROGRESS BAR
   timeUpdate() {
     var myAudio = document.getElementById("myAudio");
     var length = myAudio.duration;
@@ -223,10 +223,11 @@ class App extends React.Component {
     var myAudio = document.getElementById("myAudio");
     var progressbar = document.getElementById("progress");
     var percent = e.nativeEvent.offsetX / e.target.offsetParent.offsetWidth;
+    console.log(percent);
     // var percent = e.target.value / e.target.max;
     console.log(`this is percent`, percent);
     myAudio.currentTime = percent * myAudio.duration;
-    progressbar.value = percent / 1000;
+    progressbar.value = percent / 100;
   }
 
   //======================VOLUME BAR
@@ -268,7 +269,6 @@ class App extends React.Component {
             Previous
           </button>
         </div>
-
         <div id="play-pause-div">
           {" "}
           <button
@@ -292,7 +292,6 @@ class App extends React.Component {
             Shuffle
           </button>
         </div>
-
         <div id="repeat-div">
           <button className="repeat-button" onClick={this.repeat.bind(this)}>
             Repeat
@@ -316,7 +315,6 @@ class App extends React.Component {
         ) : (
           ""
         )}
-
         <small id="start-time"></small>
         <span id="seek-container">
           <div id="progress-div">
