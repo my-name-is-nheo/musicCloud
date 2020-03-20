@@ -14,7 +14,8 @@ class App extends React.Component {
       trackNumber: 0,
       displayList: false,
       displayVolume: false,
-      seekValue: 0
+      seekValue: 0,
+      muted: true
     };
   }
 
@@ -240,6 +241,7 @@ class App extends React.Component {
   }
 
   muteVolume() {
+    this.setState({ muted: !this.state.muted });
     var myAudio = document.getElementById("myAudio");
     console.log(myAudio.muted);
     return (myAudio.muted = !myAudio.muted);
@@ -334,7 +336,7 @@ class App extends React.Component {
             onClick={this.muteVolume.bind(this)}
             className="volume-button"
           >
-            Volume
+            {this.state.muted ? "Volume" : "Muted"}
           </button>
           {this.state.displayVolume && (
             <div>
