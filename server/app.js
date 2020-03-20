@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // seting up s3 credentials
 
-app.get("/getList", SongHandler.getRandomSong);
+app.get("/getList", SongHandler.getSong);
 
 app.listen(port, function() {
   console.log(`listening on port ${port}!`);
