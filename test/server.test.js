@@ -11,13 +11,13 @@ var instance = axios.create({
   baseURL: "http://localhost:4000/"
 });
 
-test("data from get request is not empty", async () => {
+test("data from get request should not empty", async () => {
   const { data, status } = await instance.get("/getList");
   expect(status).toBe(200);
   expect(data.length).not.toBe(0);
 });
 
-test("get request returns object with music data", async () => {
+test("get request should return object with music data", async () => {
   const { data, status } = await instance.get("/getList");
   expect(status).toBe(200);
   for (var index = 0; index < data.length; index++) {
