@@ -5,7 +5,7 @@ module.exports = {
       var queryString = "select * from songList";
       // randomize the sqlChart.
       return db.query(queryString, function(err, results) {
-        console.log(` this is results in model ` + results);
+        console.log(results);
         if (err) {
           throw err;
         }
