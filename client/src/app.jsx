@@ -238,6 +238,13 @@ class App extends React.Component {
   displayVolume() {
     this.setState({ displayVolume: !this.state.displayVolume });
   }
+
+  muteVolume() {
+    var myAudio = document.getElementById("myAudio");
+    console.log(myAudio.muted);
+    return (myAudio.muted = !myAudio.muted);
+    // return myAudio.muted ? (myAudio.muted = true) : (myAudio.muted = false);
+  }
   render() {
     return (
       <div id="mini-player">
@@ -323,7 +330,8 @@ class App extends React.Component {
 
         <div id="volume-divgit">
           <button
-            onClick={this.displayVolume.bind(this)}
+            onMouseOver={this.displayVolume.bind(this)}
+            onClick={this.muteVolume.bind(this)}
             className="volume-button"
           >
             Volume
