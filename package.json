@@ -13,7 +13,7 @@
     "db-start": "mysql -u root music < server/database/seed.sql"
   },
   "jest": {
-    "coveragePathIgnorePatterns": [
+    "coverageReporters": [
       "json",
       "html"
     ],
@@ -24,14 +24,19 @@
       "client/src/**/*.js",
       "!src/index.js"
     ],
-    "coverageReporters": [
-      "text"
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/client/dist/"
+    ],
+    "setupFiles": [
+      "./test/setUpTests.js"
     ]
   },
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/runtime": "^7.9.2",
     "axios": "^0.19.2",
+    "babel-jest": "^25.1.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "jquery": "^3.4.1",

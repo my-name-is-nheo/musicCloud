@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import $ from "jquery";
-import HoverMenu from "./components/HoverMenu.jsx";
+import HoverMenu from "./HoverMenu.jsx";
 
-class App extends React.Component {
+class MusicPlayer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: "",
+      selected: "", // currently playing
       playable: false, // set true/false based on loading of src
       playList: [],
       paused: true, // change to false if i want to autoplay on load
@@ -15,10 +15,15 @@ class App extends React.Component {
       displayList: false,
       displayVolume: false,
       seekValue: 0,
-      muted: true
+      muted: true,
+      volume: 0.5
     };
+    this.audioRef = React.createRef();
+    this.progressRef = React.createRef();
+    this.volumeRef = React.createRef();
+    this.volumeControlRef = React.createRef();
   }
-
+  // create refs for audio/progress/start-time/end-times/vol-control
   componentDidMount() {
     $.ajax({
       type: "GET",
@@ -31,55 +36,35 @@ class App extends React.Component {
         });
       }
     });
-    var myAudio = document.getElementById("myAudio");
-    myAudio.volume = 0.5; // default 0.5
-    console.log(myAudio.paused);
-    // myAudio.ontimeupdate = event => {
-    //   console.log("The currentTime attribute has been updated. Again.");
-    //   console.log(myAudio.currentTime);
-    // };
   }
   //===============PREVIOUS BUTTON
   previous() {
     console.log("clicked previous button");
-    console.log(this.state.trackNumber);
-    console.log(this.state.playList);
     var trackNum;
     if (this.state.trackNumber === 0) {
-      // compare playlist length to track number and reset.
-      // this.setState({ trackNumber: this.state.playList.length - 1 });
       trackNum = this.state.playList.length - 1;
     } else {
       trackNum = this.state.trackNumber - 1;
     }
-
     this.changeAudioSource(this.state.playList[trackNum].music_url, trackNum);
-    // this.setState({
-    //   // selected: this.state.playList[this.state.trackNumber - 1].music_url,
-    //   trackNumber: this.state.trackNumber - 1
-    // });
-    var myAudio = document.getElementById("myAudio");
-    console.log(myAudio.paused);
-    return myAudio.paused ? this.pauseAudio() : this.playAudio();
+    return this.audioRef.current.paused ? this.pauseAudio() : this.playAudio();
   }
 
   //=================HELPER FUNCTIONS
 
   playAudio() {
-    var myAudio = document.getElementById("myAudio");
-    console.log("audio is playing");
+    this.audioRef.current.volume = this.state.volume;
+    console.log(this.audioRef.current.volume);
     if (this.state.playable) {
-      return myAudio.play();
+      return this.audioRef.current.play();
     } else {
-      // setTimeout(this.playAudio.bind(this), 100); // finished loading, or try again
       this.playAudio();
     }
   }
   pauseAudio() {
-    var myAudio = document.getElementById("myAudio");
     this.setState({ paused: true });
     console.log("audio is paused");
-    return myAudio.pause();
+    return this.audioRef.current.pause();
   }
 
   changeAudioSource(src, trackNum) {
@@ -95,10 +80,9 @@ class App extends React.Component {
   }
   //=================EventHandler
   canPlay() {
-    var myAudio = document.getElementById("myAudio");
     this.setState({ playable: true });
     if (!this.state.paused) {
-      myAudio.play();
+      this.audioRef.current.play();
     }
     console.log("audio source finished loading");
   }
@@ -106,12 +90,13 @@ class App extends React.Component {
 
   play_pause() {
     console.log("clicked play/pause button");
-    var myAudio = document.getElementById("myAudio"); // re-usability problem .. only one ID with audio so it should be fine.. for now.
-    console.log("play/pause ", myAudio.paused);
+    console.log(this.audioRef.current.currentTime);
+    // re-usability problem .. only one ID with audio so it should be fine.. for now.
+    console.log("play/pause ", this.audioRef.current.paused);
     // console.log(myAudio.duration);
 
     this.setState({ paused: !this.state.paused });
-    return myAudio.paused ? this.playAudio() : this.pauseAudio();
+    return this.audioRef.current.paused ? this.playAudio() : this.pauseAudio();
   }
 
   //=====================NEXT BUTTON
@@ -129,11 +114,10 @@ class App extends React.Component {
     //   // selected: this.state.playList[this.state.trackNumber + 1].music_url,
     //   trackNumber: this.state.trackNumber + 1
     // });
-    var myAudio = document.getElementById("myAudio");
-    console.log(myAudio.duration / 60);
+    console.log(this.audioRef.current.duration / 60);
     // myAudio.load();
-    console.log(myAudio.paused);
-    return myAudio.paused ? this.pauseAudio() : this.playAudio();
+    console.log(this.audioRef.current.paused);
+    return this.audioRef.current.paused ? this.pauseAudio() : this.playAudio();
   }
   //========================SHUFFLE BUTTON
   shuffle() {
@@ -145,8 +129,6 @@ class App extends React.Component {
     }
     console.log(shuffle);
 
-    // var randomizer = Math.floor(Math.random() * this.state.playList.length);
-    // console.log(randomizer);
     this.changeAudioSource(
       this.state.playList[this.state.trackNumber].music_url
     );
@@ -157,26 +139,27 @@ class App extends React.Component {
     // console.log(this.state.trackNumber);
     // console.log(this.state.playList);
     // console.log(this.state.selected);
-    return myAudio.paused ? myAudio.play() : myAudio.pause();
+    return this.audioRef.current.paused
+      ? this.audioRef.current.play()
+      : this.audioRef.current.pause();
   }
   //=========================REPEAT BUTTON
   repeat() {
     console.log("clicked repeat button");
-    if (!document.getElementById("myAudio").loop) {
-      document.getElementById("myAudio").loop = true;
+    if (!this.audioRef.current.loop) {
+      this.audioRef.current.loop = true;
     } else {
-      document.getElementById("myAudio").loop = false;
+      this.audioRef.current.loop = false;
     }
   }
-  //=========================SHOW PLAYLIST
+  // =========================SHOW PLAYLIST
   showList() {
     this.setState({ displayList: !this.state.displayList });
   }
-  //==========================PROGRESS BAR
+  // //==========================PROGRESS BAR
   timeUpdate() {
-    var myAudio = document.getElementById("myAudio");
-    var length = myAudio.duration;
-    var currentTime = myAudio.currentTime;
+    var length = this.audioRef.current.duration;
+    var currentTime = this.audioRef.current.currentTime;
 
     var minutes = Math.floor(length / 60),
       secondsInt = length - minutes * 60,
@@ -210,31 +193,30 @@ class App extends React.Component {
     // state?
   }
   progressBarChange() {
-    var myAudio = document.getElementById("myAudio");
-    var progressbar = document.getElementById("progress");
-    var currentTime = myAudio.currentTime;
-    progressbar.value = currentTime / length;
+    console.log(this.progressRef.current.value);
+    var progressbar = this.progressRef;
+    var currentTime = this.audioRef.current.currentTime;
+    progressbar.current.value = currentTime / length;
     progressbar.addEventListener("click", this.seek);
     progressbar.addEventListener("drag", this.seek);
   }
   seek(e) {
     e.persist();
-    console.log(e);
-    var myAudio = document.getElementById("myAudio");
-    var progressbar = document.getElementById("progress");
+    var myAudio = this.audioRef;
+    var progressbar = this.progressRef;
     var percent = e.nativeEvent.offsetX / e.target.offsetParent.offsetWidth;
     console.log(percent);
     // var percent = e.target.value / e.target.max;
     console.log(`this is percent`, percent);
-    myAudio.currentTime = percent * myAudio.duration;
-    progressbar.value = percent / 100;
+    myAudio.current.currentTime = percent * myAudio.current.duration;
+    progressbar.current.value = percent / 100;
   }
 
   //======================VOLUME BAR
-  volumeBar() {
-    var volumeNumber = document.getElementById("vol-control");
-    var myAudio = document.getElementById("myAudio");
-    myAudio.volume = volumeNumber.value / 100;
+  volumeBar(e) {
+    console.log(this.audioRef.current.volume);
+    this.setState({ volume: e.currentTarget.value / 100 });
+    this.audioRef.current.volume = this.state.volume;
   }
   //====================SHOW VOLUME BAR ON CLICK
   displayVolume() {
@@ -243,22 +225,19 @@ class App extends React.Component {
 
   muteVolume() {
     this.setState({ muted: !this.state.muted });
-    var myAudio = document.getElementById("myAudio");
-    console.log(myAudio.muted);
-    return (myAudio.muted = !myAudio.muted);
-    // return myAudio.muted ? (myAudio.muted = true) : (myAudio.muted = false);
+    console.log(this.audioRef.current.muted);
+    return (this.audioRef.current.muted = !this.audioRef.current.muted);
   }
   render() {
     return (
       <div id="mini-player">
         <audio
-          id="myAudio"
+          ref={this.audioRef}
           src={this.state.selected}
-          // type="audio/mpeg"
+          volume={this.state.volume}
           preload="auto"
           onEnded={this.next.bind(this)}
           onCanPlay={this.canPlay.bind(this)}
-          onTimeUpdate={this.timeUpdate.bind(this)}
         ></audio>
         <div id="previous-div">
           {" "}
@@ -319,7 +298,7 @@ class App extends React.Component {
         <span id="seek-container">
           <div id="progress-div">
             <progress
-              id="progress"
+              ref={this.progressRef}
               value={this.state.seekValue || 0}
               max="100"
               onClick={this.seek.bind(this)}
@@ -328,7 +307,7 @@ class App extends React.Component {
         </span>
         <small id="end-time"></small>
 
-        <div id="volume-divgit">
+        <div ref={this.volumeRef}>
           <button
             onMouseOver={this.displayVolume.bind(this)}
             onClick={this.muteVolume.bind(this)}
@@ -340,7 +319,7 @@ class App extends React.Component {
             <div>
               {" "}
               <input
-                id="vol-control"
+                ref={this.volumeControlRef}
                 type="range"
                 min="0"
                 max="100"
@@ -350,7 +329,7 @@ class App extends React.Component {
             </div>
           )}
         </div>
-        <div id="playList-div">
+        <div className="playlist-div">
           <button
             onClick={this.showList.bind(this)}
             className="playList-button"
@@ -372,5 +351,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById("app"));
-export default App;
+export default MusicPlayer;

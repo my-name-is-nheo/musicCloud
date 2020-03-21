@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import App from "../client/src/App.jsx";
+import MusicPlayer from "../client/src/components/MusicPlayer.jsx";
 
 describe("Examining the syntax of Jest tests", () => {
   it("sums numbers", () => {
@@ -11,6 +11,6 @@ describe("Examining the syntax of Jest tests", () => {
 
 describe("First React component test with Enzyme", () => {
   it("renders without crashing", () => {
-    shallow(<App />);
+    const wrapper = shallow(<MusicPlayer />);
   });
 });
