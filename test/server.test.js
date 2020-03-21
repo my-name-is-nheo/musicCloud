@@ -13,7 +13,9 @@ var instance = axios.create({
 
 test("data from get request should not empty", async () => {
   const { data, status } = await instance.get("/getList");
+
   expect(status).toBe(200);
+  // console.log(status);
   expect(data.length).not.toBe(0);
 });
 
