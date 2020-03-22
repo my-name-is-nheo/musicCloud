@@ -89,8 +89,10 @@ class MusicPlayer extends React.Component {
   //=================PLAY/PAUSE BUTTON
 
   play_pause() {
-    console.log("clicked play/pause button");
-    console.log(this.audioRef.current.currentTime);
+    // var length = this.audioRef.current.duration;
+    // var currentTime = this.audioRef.current.currentTime;
+    // console.log(currentTime, length);
+
     // re-usability problem .. only one ID with audio so it should be fine.. for now.
     console.log("play/pause ", this.audioRef.current.paused);
     // console.log(myAudio.duration);
@@ -184,10 +186,6 @@ class MusicPlayer extends React.Component {
           ? "0" + current_SecondsFixed
           : current_SecondsFixed);
 
-    var start = document.getElementById("start-time");
-    start.innerHTML = current_Time;
-    var end = document.getElementById("end-time");
-    end.innerHTML = endTime;
     //onTimeUpdate
     this.setState({ seekValue: Math.floor((currentTime * 100) / length) });
     // state?
@@ -195,8 +193,9 @@ class MusicPlayer extends React.Component {
   progressBarChange() {
     console.log(this.progressRef.current.value);
     var progressbar = this.progressRef;
+    console.log(progressbar);
     var currentTime = this.audioRef.current.currentTime;
-    progressbar.current.value = currentTime / length;
+    progressbar.current.value = currentTime;
     progressbar.addEventListener("click", this.seek);
     progressbar.addEventListener("drag", this.seek);
   }
@@ -205,18 +204,19 @@ class MusicPlayer extends React.Component {
     var myAudio = this.audioRef;
     var progressbar = this.progressRef;
     var percent = e.nativeEvent.offsetX / e.target.offsetParent.offsetWidth;
-    console.log(percent);
     // var percent = e.target.value / e.target.max;
+    console.log(progressbar.current.value);
     console.log(`this is percent`, percent);
+
     myAudio.current.currentTime = percent * myAudio.current.duration;
-    progressbar.current.value = percent / 100;
+    progressbar.current.value = percent;
   }
 
   //======================VOLUME BAR
   volumeBar(e) {
     console.log(this.audioRef.current.volume);
     this.setState({ volume: e.currentTarget.value / 100 });
-    this.audioRef.current.volume = this.state.volume;
+    this.audioRef.current.volume = e.currentTarget.value / 100;
   }
   //====================SHOW VOLUME BAR ON CLICK
   displayVolume() {
@@ -238,6 +238,7 @@ class MusicPlayer extends React.Component {
           preload="auto"
           onEnded={this.next.bind(this)}
           onCanPlay={this.canPlay.bind(this)}
+          onTimeUpdate={this.timeUpdate.bind(this)}
         ></audio>
         <div id="previous-div">
           {" "}
