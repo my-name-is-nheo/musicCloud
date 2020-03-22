@@ -238,6 +238,7 @@ class MusicPlayer extends React.Component {
           preload="auto"
           onEnded={this.next.bind(this)}
           onCanPlay={this.canPlay.bind(this)}
+          onTimeUpdate={this.timeUpdate.bind(this)}
         ></audio>
         <div id="previous-div">
           {" "}
