@@ -15,8 +15,8 @@ import Volume_Hover from "../styled_components/volume_hover.js";
 import Music_Info from "../styled_components/music_info.js";
 import Small_Start_Time from "../styled_components/start_time.js";
 import Small_End_Time from "../styled_components/end_time.js";
-import Album_Cover from "../styled_components/image_css.js";
 
+import Album_Div from "../styled_components/album_div.js";
 class MusicPlayerOnFooter extends React.Component {
   constructor(props) {
     super(props);
@@ -288,16 +288,18 @@ class MusicPlayerOnFooter extends React.Component {
             />
           </Button_Repeat>
         </div>
-        <Album_Cover
-          id="queen-image"
-          src={
-            this.state.playList.length
-              ? this.state.playList[this.state.trackNumber].album_cover
-              : ""
-          }
-          width="27"
-          height="27"
-        />
+        <Album_Div id="album-cover">
+          <img
+            id="queen-image"
+            src={
+              this.state.playList.length
+                ? this.state.playList[this.state.trackNumber].album_cover
+                : ""
+            }
+            width="27"
+            height="27"
+          />
+        </Album_Div>
 
         <Small_Start_Time id="start-time"></Small_Start_Time>
         <span id="seek-container">
@@ -312,7 +314,7 @@ class MusicPlayerOnFooter extends React.Component {
         </span>
         <Small_End_Time id="end-time"></Small_End_Time>
 
-        <div ref={this.volumeRef}>
+        <div ref={this.volumeRef} id="volume-button">
           {this.state.displayVolume && (
             <div>
               {" "}

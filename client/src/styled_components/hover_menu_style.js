@@ -10,7 +10,9 @@ const HoverDiv = styled.div`
   background-color: Orange;
   height: 219px;
   font-size: xx-small;
-  margin-bottom: 35px;
+  font-family: Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana,
+    Tahoma, sans-serif;
+  margin-bottom: 71px;
   position: absolute;
   left: 1141px;
 `;

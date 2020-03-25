@@ -10,10 +10,9 @@ const Button_Volume = styled.button`
   border: none;
   outline: none;
   background: none;
-  vertical-align: middle;
-  position: absolute;
-  top: -6px;
-  right: 450px;
+  position: relative;
+  top: -17px;
+  left: 895px;
 `;
 
 export default Button_Volume;

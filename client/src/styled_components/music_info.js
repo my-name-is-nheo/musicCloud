@@ -5,10 +5,12 @@ const Music_Info = styled.p`
   /* margin-left: 185px; */
   top: auto;
   font-size: 11px;
+  font-family: Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana,
+    Tahoma, sans-serif;
   color: #666;
   position: absolute;
   top: 0;
-  left: 1044px;
+  left: 1032px;
 `;
 
 export default Music_Info;
