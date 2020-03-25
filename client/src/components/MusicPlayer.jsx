@@ -2,7 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import $ from "jquery";
 import HoverMenu from "./HoverMenu.jsx";
-
+import ButtonPlay_Pause from "../styled_components/play_pause.js";
+import Button_Previous from "../styled_components/previous_button.js";
+import Button_Next from "../styled_components/next_button.js";
+import Button_Shuffle from "../styled_components/shuffle_button.js";
+import Button_Repeat from "../styled_components/repeat_button.js";
+import Button_PlayList from "../styled_components/playlist_button.js";
+import Button_Volume from "../styled_components/volume_button.js";
+import Music_Player from "../styled_components/container_style.js";
+import Progress_div from "../styled_components/progress_div.js";
 class MusicPlayer extends React.Component {
   constructor(props) {
     super(props);
@@ -22,6 +30,7 @@ class MusicPlayer extends React.Component {
     this.progressRef = React.createRef();
     this.volumeRef = React.createRef();
     this.volumeControlRef = React.createRef();
+    this.startTimeRef = React.createRef();
   }
   // create refs for audio/progress/start-time/end-times/vol-control
   componentDidMount() {
@@ -29,7 +38,6 @@ class MusicPlayer extends React.Component {
       type: "GET",
       url: "http://localhost:4000/getList",
       success: data => {
-        console.log(" this is data from client ", data);
         this.setState({
           playList: data,
           selected: data[0].music_url
@@ -63,7 +71,6 @@ class MusicPlayer extends React.Component {
   }
   pauseAudio() {
     this.setState({ paused: true });
-    console.log("audio is paused");
     return this.audioRef.current.pause();
   }
 
@@ -89,14 +96,7 @@ class MusicPlayer extends React.Component {
   //=================PLAY/PAUSE BUTTON
 
   play_pause() {
-    // var length = this.audioRef.current.duration;
-    // var currentTime = this.audioRef.current.currentTime;
-    // console.log(currentTime, length);
-
-    // re-usability problem .. only one ID with audio so it should be fine.. for now.
     console.log("play/pause ", this.audioRef.current.paused);
-    // console.log(myAudio.duration);
-
     this.setState({ paused: !this.state.paused });
     return this.audioRef.current.paused ? this.playAudio() : this.pauseAudio();
   }
@@ -112,12 +112,8 @@ class MusicPlayer extends React.Component {
     console.log("clicked next button");
     console.log(this.state.trackNumber);
     this.changeAudioSource(this.state.playList[trackNum].music_url, trackNum);
-    // this.setState({
-    //   // selected: this.state.playList[this.state.trackNumber + 1].music_url,
-    //   trackNumber: this.state.trackNumber + 1
-    // });
     console.log(this.audioRef.current.duration / 60);
-    // myAudio.load();
+
     console.log(this.audioRef.current.paused);
     return this.audioRef.current.paused ? this.pauseAudio() : this.playAudio();
   }
@@ -136,11 +132,7 @@ class MusicPlayer extends React.Component {
     );
     this.setState({
       playList: shuffle
-      // selected: this.state.playList[this.state.trackNumber].music_url
     });
-    // console.log(this.state.trackNumber);
-    // console.log(this.state.playList);
-    // console.log(this.state.selected);
     return this.audioRef.current.paused
       ? this.audioRef.current.play()
       : this.audioRef.current.pause();
@@ -154,7 +146,7 @@ class MusicPlayer extends React.Component {
       this.audioRef.current.loop = false;
     }
   }
-  // =========================SHOW PLAYLIST
+  // ==========================SHOW PLAYLIST
   showList() {
     this.setState({ displayList: !this.state.displayList });
   }
@@ -173,7 +165,7 @@ class MusicPlayer extends React.Component {
     } else {
       seconds;
     }
-    var endTime = minutes + ":" + seconds; //<==== total time in correct form
+    var endTime = minutes + ":" + seconds;
 
     var currentHour = parseInt(currentTime / 3600) % 24,
       currentMinute = parseInt(currentTime / 60) % 60,
@@ -186,21 +178,15 @@ class MusicPlayer extends React.Component {
           ? "0" + current_SecondsFixed
           : current_SecondsFixed);
 
-    //onTimeUpdate
+    var start = document.getElementById("start-time");
+    start.innerHTML = current_Time;
+    var end = document.getElementById("end-time");
+    end.innerHTML = endTime;
     this.setState({ seekValue: Math.floor((currentTime * 100) / length) });
-    // state?
-  }
-  progressBarChange() {
-    console.log(this.progressRef.current.value);
-    var progressbar = this.progressRef;
-    console.log(progressbar);
-    var currentTime = this.audioRef.current.currentTime;
-    progressbar.current.value = currentTime;
-    progressbar.addEventListener("click", this.seek);
-    progressbar.addEventListener("drag", this.seek);
   }
   seek(e) {
     e.persist();
+    console.log(e);
     var myAudio = this.audioRef;
     var progressbar = this.progressRef;
     var percent = e.nativeEvent.offsetX / e.target.offsetParent.offsetWidth;
@@ -208,17 +194,17 @@ class MusicPlayer extends React.Component {
     console.log(progressbar.current.value);
     console.log(`this is percent`, percent);
 
-    myAudio.current.currentTime = percent * myAudio.current.duration;
-    progressbar.current.value = percent;
+    myAudio.current.currentTime = percent * 1.24 * myAudio.current.duration;
+    progressbar.current.value = percent / 100;
   }
 
-  //======================VOLUME BAR
+  //=================================VOLUME BAR
   volumeBar(e) {
     console.log(this.audioRef.current.volume);
     this.setState({ volume: e.currentTarget.value / 100 });
     this.audioRef.current.volume = e.currentTarget.value / 100;
   }
-  //====================SHOW VOLUME BAR ON CLICK
+  //===================================SHOW VOLUME BAR ON CLICK
   displayVolume() {
     this.setState({ displayVolume: !this.state.displayVolume });
   }
@@ -230,7 +216,7 @@ class MusicPlayer extends React.Component {
   }
   render() {
     return (
-      <div id="mini-player">
+      <Music_Player>
         <audio
           ref={this.audioRef}
           src={this.state.selected}
@@ -242,84 +228,105 @@ class MusicPlayer extends React.Component {
         ></audio>
         <div id="previous-div">
           {" "}
-          <button
+          <Button_Previous
             className="previous-button"
             onClick={this.previous.bind(this)}
           >
-            Previous
-          </button>
+            <img
+              src="https://image.flaticon.com/icons/svg/254/254437.svg"
+              width="30px"
+              height="30%"
+            />
+          </Button_Previous>
         </div>
         <div id="play-pause-div">
           {" "}
-          <button
+          <ButtonPlay_Pause
             className="playPause-button"
             onClick={this.play_pause.bind(this)}
           >
-            {this.state.paused ? "Play" : "Pause"}
-          </button>
+            {this.state.paused ? (
+              <img
+                src="https://image.flaticon.com/icons/svg/254/254434.svg"
+                width="30px"
+                height="30%"
+              />
+            ) : (
+              <img
+                src="https://image.flaticon.com/icons/svg/633/633940.svg"
+                width="30px"
+                height="30%"
+              />
+            )}
+          </ButtonPlay_Pause>
         </div>
 
         <div id="next-div">
           {" "}
-          <button className="next-button" onClick={this.next.bind(this)}>
-            Next
-          </button>
+          <Button_Next className="next-button" onClick={this.next.bind(this)}>
+            <img
+              src="https://image.flaticon.com/icons/svg/254/254428.svg"
+              width="30px"
+              height="30%"
+            />
+          </Button_Next>
         </div>
 
         <div id="shuffle-div">
           {" "}
-          <button className="shuffle-button" onClick={this.shuffle.bind(this)}>
-            Shuffle
-          </button>
+          <Button_Shuffle
+            className="shuffle-button"
+            onClick={this.shuffle.bind(this)}
+          >
+            <img
+              src="https://image.flaticon.com/icons/svg/2057/2057590.svg"
+              width="30px"
+              height="30%"
+            />
+          </Button_Shuffle>
         </div>
         <div id="repeat-div">
-          <button className="repeat-button" onClick={this.repeat.bind(this)}>
-            Repeat
-          </button>
+          <Button_Repeat
+            className="repeat-button"
+            onClick={this.repeat.bind(this)}
+          >
+            <img
+              src="https://image.flaticon.com/icons/svg/565/565272.svg"
+              width="30px"
+              height="30%"
+            />
+          </Button_Repeat>
         </div>
         <img
+          id="queen-image"
           src={
             this.state.playList.length
               ? this.state.playList[this.state.trackNumber].album_cover
               : ""
           }
-          width="52"
-          height="52"
+          width="27"
+          height="27"
         />
-        {this.state.playList.length ? (
-          <p>
-            {this.state.playList[this.state.trackNumber].music_title}
-            <small> by </small>
-            {this.state.playList[this.state.trackNumber].artist_name}
-          </p>
-        ) : (
-          ""
-        )}
+
         <small id="start-time"></small>
         <span id="seek-container">
-          <div id="progress-div">
+          <Progress_div>
             <progress
               ref={this.progressRef}
               value={this.state.seekValue || 0}
               max="100"
               onClick={this.seek.bind(this)}
             ></progress>
-          </div>
+          </Progress_div>
         </span>
         <small id="end-time"></small>
 
         <div ref={this.volumeRef}>
-          <button
-            onMouseOver={this.displayVolume.bind(this)}
-            onClick={this.muteVolume.bind(this)}
-            className="volume-button"
-          >
-            {this.state.muted ? "Volume" : "Muted"}
-          </button>
           {this.state.displayVolume && (
             <div>
               {" "}
               <input
+                id="volume"
                 ref={this.volumeControlRef}
                 type="range"
                 min="0"
@@ -329,25 +336,54 @@ class MusicPlayer extends React.Component {
               ></input>
             </div>
           )}
+          <Button_Volume
+            onMouseOver={this.displayVolume.bind(this)}
+            onClick={this.muteVolume.bind(this)}
+            className="volume-button"
+          >
+            {this.state.muted ? (
+              <img
+                src="https://image.flaticon.com/icons/svg/727/727269.svg"
+                width="30px"
+                height="30%"
+              />
+            ) : (
+              <img
+                src="https://image.flaticon.com/icons/svg/727/727240.svg"
+                width="30px"
+                height="30%"
+              />
+            )}
+          </Button_Volume>
         </div>
+        {this.state.playList.length ? (
+          <p id="music-info">
+            {this.state.playList[this.state.trackNumber].music_title}
+            <small> by </small>
+            {this.state.playList[this.state.trackNumber].artist_name}
+          </p>
+        ) : (
+          ""
+        )}
         <div className="playlist-div">
-          <button
+          {this.state.displayList && (
+            <HoverMenu
+              playList={this.state.playList}
+              selected={this.state.selected}
+            />
+          )}
+          <Button_PlayList
             onClick={this.showList.bind(this)}
             className="playList-button"
           >
-            PlayList
-          </button>
-          {this.state.displayList && (
-            <div>
-              {" "}
-              <HoverMenu
-                playList={this.state.playList}
-                selected={this.state.selected}
-              />
-            </div>
-          )}
+            <img
+              src="https://image.flaticon.com/icons/svg/565/565266.svg"
+              width="30px"
+              height="30%"
+            />
+          </Button_PlayList>
         </div>
-      </div>
+      </Music_Player>
     );
   }
 }

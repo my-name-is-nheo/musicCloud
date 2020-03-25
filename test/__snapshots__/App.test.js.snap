@@ -1,0 +1,257 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MusicPlayer should render snapshot 1`] = `
+<MusicPlayer>
+  <styled.div>
+    <div
+      className="sc-fzozJi cwrFor"
+    >
+      <audio
+        onCanPlay={[Function]}
+        onEnded={[Function]}
+        onTimeUpdate={[Function]}
+        preload="auto"
+        src=""
+        volume={0.5}
+      />
+      <div
+        id="previous-div"
+      >
+         
+        <styled.button
+          className="previous-button"
+          onClick={[Function]}
+        >
+          <button
+            className="sc-AxhCb WvUlE previous-button"
+            onClick={[Function]}
+          >
+            <img
+              height="30%"
+              src="https://image.flaticon.com/icons/svg/254/254437.svg"
+              width="30px"
+            />
+          </button>
+        </styled.button>
+      </div>
+      <div
+        id="play-pause-div"
+      >
+         
+        <styled.button
+          className="playPause-button"
+          onClick={[Function]}
+        >
+          <button
+            className="sc-AxiKw bEmyn playPause-button"
+            onClick={[Function]}
+          >
+            <img
+              height="30%"
+              src="https://image.flaticon.com/icons/svg/254/254434.svg"
+              width="30px"
+            />
+          </button>
+        </styled.button>
+      </div>
+      <div
+        id="next-div"
+      >
+         
+        <styled.button
+          className="next-button"
+          onClick={[Function]}
+        >
+          <button
+            className="sc-AxhUy fpjEso next-button"
+            onClick={[Function]}
+          >
+            <img
+              height="30%"
+              src="https://image.flaticon.com/icons/svg/254/254428.svg"
+              width="30px"
+            />
+          </button>
+        </styled.button>
+      </div>
+      <div
+        id="shuffle-div"
+      >
+         
+        <styled.button
+          className="shuffle-button"
+          onClick={[Function]}
+        >
+          <button
+            className="sc-AxgMl jxxhRS shuffle-button"
+            onClick={[Function]}
+          >
+            <img
+              height="30%"
+              src="https://image.flaticon.com/icons/svg/2057/2057590.svg"
+              width="30px"
+            />
+          </button>
+        </styled.button>
+      </div>
+      <div
+        id="repeat-div"
+      >
+        <styled.button
+          className="repeat-button"
+          onClick={[Function]}
+        >
+          <button
+            className="sc-AxheI BEzGc repeat-button"
+            onClick={[Function]}
+          >
+            <img
+              height="30%"
+              src="https://image.flaticon.com/icons/svg/565/565272.svg"
+              width="30px"
+            />
+          </button>
+        </styled.button>
+      </div>
+      <img
+        height="27"
+        id="queen-image"
+        src=""
+        width="27"
+      />
+      <small
+        id="start-time"
+      />
+      <span
+        id="seek-container"
+      >
+        <styled.div>
+          <div
+            className="sc-fzoLsD bRplmR"
+          >
+            <progress
+              max="100"
+              onClick={[Function]}
+              value={0}
+            />
+          </div>
+        </styled.div>
+      </span>
+      <small
+        id="end-time"
+      />
+      <div>
+        <styled.button
+          className="volume-button"
+          onClick={[Function]}
+          onMouseOver={[Function]}
+        >
+          <button
+            className="sc-AxmLO gJONoK volume-button"
+            onClick={[Function]}
+            onMouseOver={[Function]}
+          >
+            <img
+              height="30%"
+              src="https://image.flaticon.com/icons/svg/727/727269.svg"
+              width="30px"
+            />
+          </button>
+        </styled.button>
+      </div>
+      <div
+        className="playlist-div"
+      >
+        <styled.button
+          className="playList-button"
+          onClick={[Function]}
+        >
+          <button
+            className="sc-Axmtr jbAStq playList-button"
+            onClick={[Function]}
+          >
+            <img
+              height="30%"
+              src="https://image.flaticon.com/icons/svg/565/565266.svg"
+              width="30px"
+            />
+          </button>
+        </styled.button>
+      </div>
+    </div>
+  </styled.div>
+</MusicPlayer>
+`;
+
+exports[`MusicPlayer song information should render. 1`] = `
+<styled.div>
+  <div
+    id="next-bar"
+  >
+    Next Up 
+    <styled.button>
+      Clear
+    </styled.button>
+  </div>
+  <div
+    key="0"
+  >
+    <h4>
+      Track Number
+    </h4>
+    <p>
+      Test #1
+    </p>
+    <h4>
+      Title
+    </h4>
+    <p>
+      I'm baby
+    </p>
+    <h4>
+      Artist
+    </h4>
+    <p>
+      Queen
+    </p>
+    <h4>
+      Album Cover
+    </h4>
+    <img
+      height="27"
+      src="https://i.kym-cdn.com/photos/images/original/001/627/845/c22.jpg"
+      width="27"
+    />
+  </div>
+  <div
+    key="1"
+  >
+    <h4>
+      Track Number
+    </h4>
+    <p>
+      Test #2
+    </p>
+    <h4>
+      Title
+    </h4>
+    <p>
+      uh.
+    </p>
+    <h4>
+      Artist
+    </h4>
+    <p>
+      Spears
+    </p>
+    <h4>
+      Album Cover
+    </h4>
+    <img
+      height="27"
+      src="https://i.kym-cdn.com/photos/images/original/001/627/845/c22.jpg"
+      width="27"
+    />
+  </div>
+</styled.div>
+`;
