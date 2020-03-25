@@ -1,12 +1,13 @@
 import React from "react";
 import HoverDiv from "../styled_components/hover_menu_style.js";
-import Button_Clear from "../styled_components/clear_button.js";
+import Button_Clear from "../styled_components/buttons/clear_button.js";
+import Hover_Next from "../styled_components/Hover_Next.js";
 
 const HoverMenu = props => (
   <HoverDiv>
-    <div id="next-bar">
+    <Hover_Next>
       Next Up <Button_Clear>Clear</Button_Clear>
-    </div>
+    </Hover_Next>
 
     {props.playList.map((song, id) => {
       return (

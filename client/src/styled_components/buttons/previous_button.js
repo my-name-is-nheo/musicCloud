@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Button_Previous = styled.button`
   height: 50px;
-  width: 55px;
+  width: 28px;
   background-color: transparent;
   border-radius: 50%;
   padding: 0;

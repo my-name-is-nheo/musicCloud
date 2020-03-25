@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-const ButtonPlay_Pause = styled.button`
+const Button_Next = styled.button`
   height: 50px;
-  width: 55px;
+  width: 28px;
   background-color: transparent;
   border-radius: 50%;
   padding: 0;
@@ -10,8 +10,8 @@ const ButtonPlay_Pause = styled.button`
   outline: none;
   background: none;
   position: absolute;
-  left: 329px;
+  left: 354px;
   top: -7px;
 `;
 
-export default ButtonPlay_Pause;
+export default Button_Next;

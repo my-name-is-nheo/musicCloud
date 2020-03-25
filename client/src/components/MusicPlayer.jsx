@@ -2,15 +2,21 @@ import React from "react";
 import ReactDOM from "react-dom";
 import $ from "jquery";
 import HoverMenu from "./HoverMenu.jsx";
-import ButtonPlay_Pause from "../styled_components/play_pause.js";
-import Button_Previous from "../styled_components/previous_button.js";
-import Button_Next from "../styled_components/next_button.js";
-import Button_Shuffle from "../styled_components/shuffle_button.js";
-import Button_Repeat from "../styled_components/repeat_button.js";
-import Button_PlayList from "../styled_components/playlist_button.js";
-import Button_Volume from "../styled_components/volume_button.js";
+import ButtonPlay_Pause from "../styled_components/buttons/play_pause.js";
+import Button_Previous from "../styled_components/buttons/previous_button.js";
+import Button_Next from "../styled_components/buttons/next_button.js";
+import Button_Shuffle from "../styled_components/buttons/shuffle_button.js";
+import Button_Repeat from "../styled_components/buttons/repeat_button.js";
+import Button_PlayList from "../styled_components/buttons/playlist_button.js";
+import Button_Volume from "../styled_components/buttons/volume_button.js";
 import Music_Player from "../styled_components/container_style.js";
 import Progress_div from "../styled_components/progress_div.js";
+import Volume_Hover from "../styled_components/volume_hover.js";
+import Music_Info from "../styled_components/music_info.js";
+import Small_Start_Time from "../styled_components/start_time.js";
+import Small_End_Time from "../styled_components/end_time.js";
+import Album_Cover from "../styled_components/image_css.js";
+
 class MusicPlayer extends React.Component {
   constructor(props) {
     super(props);
@@ -297,7 +303,7 @@ class MusicPlayer extends React.Component {
             />
           </Button_Repeat>
         </div>
-        <img
+        <Album_Cover
           id="queen-image"
           src={
             this.state.playList.length
@@ -308,7 +314,7 @@ class MusicPlayer extends React.Component {
           height="27"
         />
 
-        <small id="start-time"></small>
+        <Small_Start_Time id="start-time"></Small_Start_Time>
         <span id="seek-container">
           <Progress_div>
             <progress
@@ -319,21 +325,20 @@ class MusicPlayer extends React.Component {
             ></progress>
           </Progress_div>
         </span>
-        <small id="end-time"></small>
+        <Small_End_Time id="end-time"></Small_End_Time>
 
         <div ref={this.volumeRef}>
           {this.state.displayVolume && (
             <div>
               {" "}
-              <input
-                id="volume"
+              <Volume_Hover
                 ref={this.volumeControlRef}
                 type="range"
                 min="0"
                 max="100"
                 step="1"
                 onChange={this.volumeBar.bind(this)}
-              ></input>
+              ></Volume_Hover>
             </div>
           )}
           <Button_Volume
@@ -357,11 +362,11 @@ class MusicPlayer extends React.Component {
           </Button_Volume>
         </div>
         {this.state.playList.length ? (
-          <p id="music-info">
+          <Music_Info id="music-info">
             {this.state.playList[this.state.trackNumber].music_title}
             <small> by </small>
             {this.state.playList[this.state.trackNumber].artist_name}
-          </p>
+          </Music_Info>
         ) : (
           ""
         )}
