@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 const Music_Player = styled.div`
   display: flex;
-  position: absolute;
-  bottom: 0;
+  position: fixed;
+  bottom: -35px;
   width: 100%;
   align-items: center;
   background-color: #f2f2f2;
   border-top: 1px solid #cecece;
-  height: 35px;
+  height: 70px;
   left: 0;
 `;
 
