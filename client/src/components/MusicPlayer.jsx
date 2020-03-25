@@ -15,7 +15,7 @@ import Volume_Hover from "../styled_components/volume_hover.js";
 import Music_Info from "../styled_components/music_info.js";
 import Small_Start_Time from "../styled_components/start_time.js";
 import Small_End_Time from "../styled_components/end_time.js";
-
+import Volume_div from "../styled_components/volume_div.js";
 import Album_Div from "../styled_components/album_div.js";
 class MusicPlayerOnFooter extends React.Component {
   constructor(props) {
@@ -316,7 +316,7 @@ class MusicPlayerOnFooter extends React.Component {
 
         <div ref={this.volumeRef} id="volume-button">
           {this.state.displayVolume && (
-            <div>
+            <Volume_div>
               {" "}
               <Volume_Hover
                 ref={this.volumeControlRef}
@@ -326,7 +326,7 @@ class MusicPlayerOnFooter extends React.Component {
                 step="1"
                 onChange={this.volumeBar.bind(this)}
               ></Volume_Hover>
-            </div>
+            </Volume_div>
           )}
           <Button_Volume
             onMouseOver={this.displayVolume.bind(this)}
