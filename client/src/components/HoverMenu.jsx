@@ -1,7 +1,14 @@
 import React from "react";
+import HoverDiv from "../styled_components/hover_menu_style.js";
+import Button_Clear from "../styled_components/buttons/clear_button.js";
+import Hover_Next from "../styled_components/Hover_Next.js";
 
 const HoverMenu = props => (
-  <div>
+  <HoverDiv>
+    <Hover_Next>
+      Next Up <Button_Clear>Clear</Button_Clear>
+    </Hover_Next>
+
     {props.playList.map((song, id) => {
       return (
         <div key={id}>
@@ -12,11 +19,11 @@ const HoverMenu = props => (
           <h4>Artist</h4>
           <p>{song.artist_name}</p>
           <h4>Album Cover</h4>
-          <img src={song.album_cover} width="52" height="52" />
+          <img src={song.album_cover} width="27" height="27" />
         </div>
       );
     })}
-  </div>
+  </HoverDiv>
 );
 
 export default HoverMenu;
