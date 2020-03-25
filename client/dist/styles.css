@@ -1,0 +1,23 @@
+progress {
+  margin-right: 12px;
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  height: 2px;
+}
+
+progress[value] {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 1 1 auto;
+  margin: 40px;
+  width: 354px;
+}
+progress[value]::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+progress[value]::-webkit-progress-value {
+  background-color: orange;
+  transition: opacity 0.15s;
+}
