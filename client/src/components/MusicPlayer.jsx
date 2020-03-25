@@ -68,7 +68,6 @@ class MusicPlayer extends React.Component {
 
   playAudio() {
     this.audioRef.current.volume = this.state.volume;
-    console.log(this.audioRef.current.volume);
     if (this.state.playable) {
       return this.audioRef.current.play();
     } else {
@@ -89,7 +88,6 @@ class MusicPlayer extends React.Component {
       playable: false,
       trackNumber: trackNum
     });
-    console.log("changing audio source");
   }
   //=================EventHandler
   canPlay() {
@@ -97,12 +95,10 @@ class MusicPlayer extends React.Component {
     if (!this.state.paused) {
       this.audioRef.current.play();
     }
-    console.log("audio source finished loading");
   }
   //=================PLAY/PAUSE BUTTON
 
   play_pause() {
-    console.log("play/pause ", this.audioRef.current.paused);
     this.setState({ paused: !this.state.paused });
     return this.audioRef.current.paused ? this.playAudio() : this.pauseAudio();
   }
@@ -115,23 +111,18 @@ class MusicPlayer extends React.Component {
     } else {
       trackNum = this.state.trackNumber + 1;
     }
-    console.log("clicked next button");
-    console.log(this.state.trackNumber);
-    this.changeAudioSource(this.state.playList[trackNum].music_url, trackNum);
-    console.log(this.audioRef.current.duration / 60);
 
-    console.log(this.audioRef.current.paused);
+    this.changeAudioSource(this.state.playList[trackNum].music_url, trackNum);
+
     return this.audioRef.current.paused ? this.pauseAudio() : this.playAudio();
   }
   //========================SHUFFLE BUTTON
   shuffle() {
-    console.log("clicked shuffle button");
     var playList = this.state.playList;
     var shuffle = playList.sort(func);
     function func(a, b) {
       return 0.5 - Math.random();
     }
-    console.log(shuffle);
 
     this.changeAudioSource(
       this.state.playList[this.state.trackNumber].music_url
@@ -145,7 +136,6 @@ class MusicPlayer extends React.Component {
   }
   //=========================REPEAT BUTTON
   repeat() {
-    console.log("clicked repeat button");
     if (!this.audioRef.current.loop) {
       this.audioRef.current.loop = true;
     } else {
@@ -192,13 +182,10 @@ class MusicPlayer extends React.Component {
   }
   seek(e) {
     e.persist();
-    console.log(e);
+
     var myAudio = this.audioRef;
     var progressbar = this.progressRef;
     var percent = e.nativeEvent.offsetX / e.target.offsetParent.offsetWidth;
-    // var percent = e.target.value / e.target.max;
-    console.log(progressbar.current.value);
-    console.log(`this is percent`, percent);
 
     myAudio.current.currentTime = percent * 1.24 * myAudio.current.duration;
     progressbar.current.value = percent / 100;
@@ -206,7 +193,6 @@ class MusicPlayer extends React.Component {
 
   //=================================VOLUME BAR
   volumeBar(e) {
-    console.log(this.audioRef.current.volume);
     this.setState({ volume: e.currentTarget.value / 100 });
     this.audioRef.current.volume = e.currentTarget.value / 100;
   }
@@ -217,7 +203,6 @@ class MusicPlayer extends React.Component {
 
   muteVolume() {
     this.setState({ muted: !this.state.muted });
-    console.log(this.audioRef.current.muted);
     return (this.audioRef.current.muted = !this.audioRef.current.muted);
   }
   render() {

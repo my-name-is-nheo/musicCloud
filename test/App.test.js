@@ -1,6 +1,8 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import { shallow, mount } from "enzyme";
 import MusicPlayer from "../client/src/components/MusicPlayer.jsx";
+import ButtonPlay_Pause from "../client/src/components/MusicPlayer.jsx";
 import HoverMenu from "../client/src/components/HoverMenu.jsx";
 
 describe("Examining the syntax of Jest tests", () => {
@@ -40,10 +42,18 @@ describe("MusicPlayer", () => {
     expect(example).toMatchSnapshot();
   });
 
-  test("should not render hoverList if displayList is false.", () => {
-    const wrapper = shallow(<MusicPlayer />);
-    expect(wrapper.find("HoverMenu").length).toEqual(0);
+  //on hover should render the menu
+  test("Music Player should render properly", () => {
+    const div = document.createElement("div");
+    ReactDOM.render(<MusicPlayer />, div);
+    ReactDOM.unmountComponentAtNode(div);
   });
 
-  //on hover should render the menu
+  const mockFn = jest.fn();
+
+  test("playbutton simulating click event", () => {
+    const wrapper = shallow(<ButtonPlay_Pause handClick={mockFn} />);
+    wrapper.simulate("click");
+    expect(mockFn).toHaveBeenCalled();
+  });
 });

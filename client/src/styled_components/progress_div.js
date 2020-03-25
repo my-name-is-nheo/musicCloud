@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Progress_div = styled.div`
   position: absolute;
-  top: -31px;
+  top: -24px;
   left: 469px;
 `;
 

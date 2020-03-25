@@ -4,7 +4,7 @@ exports[`MusicPlayer should render snapshot 1`] = `
 <MusicPlayer>
   <styled.div>
     <div
-      className="sc-fzozJi cwrFor"
+      className="sc-fzoLsD difmhU"
     >
       <audio
         onCanPlay={[Function]}
@@ -23,7 +23,7 @@ exports[`MusicPlayer should render snapshot 1`] = `
           onClick={[Function]}
         >
           <button
-            className="sc-AxhCb WvUlE previous-button"
+            className="sc-AxhUy iUflkL previous-button"
             onClick={[Function]}
           >
             <img
@@ -43,7 +43,7 @@ exports[`MusicPlayer should render snapshot 1`] = `
           onClick={[Function]}
         >
           <button
-            className="sc-AxiKw bEmyn playPause-button"
+            className="sc-AxhCb laQNKB playPause-button"
             onClick={[Function]}
           >
             <img
@@ -63,7 +63,7 @@ exports[`MusicPlayer should render snapshot 1`] = `
           onClick={[Function]}
         >
           <button
-            className="sc-AxhUy fpjEso next-button"
+            className="sc-AxgMl gCkUFs next-button"
             onClick={[Function]}
           >
             <img
@@ -83,7 +83,7 @@ exports[`MusicPlayer should render snapshot 1`] = `
           onClick={[Function]}
         >
           <button
-            className="sc-AxgMl jxxhRS shuffle-button"
+            className="sc-AxheI cjZMoI shuffle-button"
             onClick={[Function]}
           >
             <img
@@ -102,7 +102,7 @@ exports[`MusicPlayer should render snapshot 1`] = `
           onClick={[Function]}
         >
           <button
-            className="sc-AxheI BEzGc repeat-button"
+            className="sc-Axmtr giAfMv repeat-button"
             onClick={[Function]}
           >
             <img
@@ -113,21 +113,34 @@ exports[`MusicPlayer should render snapshot 1`] = `
           </button>
         </styled.button>
       </div>
-      <img
+      <styled.img
         height="27"
         id="queen-image"
         src=""
         width="27"
-      />
-      <small
+      >
+        <img
+          className="sc-fzokOt dhrFRT"
+          height="27"
+          id="queen-image"
+          src=""
+          width="27"
+        />
+      </styled.img>
+      <styled.small
         id="start-time"
-      />
+      >
+        <small
+          className="sc-fznKkj iVXrZs"
+          id="start-time"
+        />
+      </styled.small>
       <span
         id="seek-container"
       >
         <styled.div>
           <div
-            className="sc-fzoLsD bRplmR"
+            className="sc-fzpans eJsimJ"
           >
             <progress
               max="100"
@@ -137,9 +150,14 @@ exports[`MusicPlayer should render snapshot 1`] = `
           </div>
         </styled.div>
       </span>
-      <small
+      <styled.small
         id="end-time"
-      />
+      >
+        <small
+          className="sc-fznZeY fRlhXC"
+          id="end-time"
+        />
+      </styled.small>
       <div>
         <styled.button
           className="volume-button"
@@ -147,7 +165,7 @@ exports[`MusicPlayer should render snapshot 1`] = `
           onMouseOver={[Function]}
         >
           <button
-            className="sc-AxmLO gJONoK volume-button"
+            className="sc-fzozJi hRaFMj volume-button"
             onClick={[Function]}
             onMouseOver={[Function]}
           >
@@ -167,7 +185,7 @@ exports[`MusicPlayer should render snapshot 1`] = `
           onClick={[Function]}
         >
           <button
-            className="sc-Axmtr jbAStq playList-button"
+            className="sc-AxmLO hhKiZn playList-button"
             onClick={[Function]}
           >
             <img
@@ -185,14 +203,12 @@ exports[`MusicPlayer should render snapshot 1`] = `
 
 exports[`MusicPlayer song information should render. 1`] = `
 <styled.div>
-  <div
-    id="next-bar"
-  >
+  <styled.div>
     Next Up 
     <styled.button>
       Clear
     </styled.button>
-  </div>
+  </styled.div>
   <div
     key="0"
   >
