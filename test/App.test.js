@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { shallow, mount } from "enzyme";
-import MusicPlayer from "../client/src/components/MusicPlayer.jsx";
+import MusicPlayerOnFooter from "../client/src/components/MusicPlayer.jsx";
 import ButtonPlay_Pause from "../client/src/components/MusicPlayer.jsx";
 import HoverMenu from "../client/src/components/HoverMenu.jsx";
 
@@ -45,7 +45,7 @@ describe("MusicPlayer", () => {
   //on hover should render the menu
   test("Music Player should render properly", () => {
     const div = document.createElement("div");
-    ReactDOM.render(<MusicPlayer />, div);
+    ReactDOM.render(<MusicPlayerOnFooter />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 
