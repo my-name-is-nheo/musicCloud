@@ -17,7 +17,7 @@ import Small_Start_Time from "../styled_components/start_time.js";
 import Small_End_Time from "../styled_components/end_time.js";
 import Album_Cover from "../styled_components/image_css.js";
 
-class MusicPlayer extends React.Component {
+class MusicPlayerOnFooter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -378,4 +378,4 @@ class MusicPlayer extends React.Component {
   }
 }
 
-export default MusicPlayer;
+export default MusicPlayerOnFooter;
