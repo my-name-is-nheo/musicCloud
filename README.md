@@ -4,10 +4,10 @@
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+- https://github.com/FEC-group-Zelda/FEC-media-player-justin
+- https://github.com/FEC-group-Zelda/FEC-comments-feed-module-riley
+- https://github.com/FEC-group-Zelda/fec-service-nick
+- https://github.com/FEC-group-Zelda/fec-sidebar-mariah
 
 ## Table of Contents
 
@@ -36,4 +36,3 @@ From within the root directory:
 npm install -g webpack
 npm install
 ```
-

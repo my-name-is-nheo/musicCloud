@@ -207,175 +207,177 @@ class MusicPlayerOnFooter extends React.Component {
   }
   render() {
     return (
-      <Music_Player>
-        <audio
-          ref={this.audioRef}
-          src={this.state.selected}
-          volume={this.state.volume}
-          preload="auto"
-          onEnded={this.next.bind(this)}
-          onCanPlay={this.canPlay.bind(this)}
-          onTimeUpdate={this.timeUpdate.bind(this)}
-        ></audio>
-        <div id="previous-div">
-          {" "}
-          <Button_Previous
-            className="previous-button"
-            onClick={this.previous.bind(this)}
-          >
-            <img
-              src="https://image.flaticon.com/icons/svg/254/254437.svg"
-              width="30px"
-              height="30%"
-            />
-          </Button_Previous>
-        </div>
-        <div id="play-pause-div">
-          {" "}
-          <ButtonPlay_Pause
-            className="playPause-button"
-            onClick={this.play_pause.bind(this)}
-          >
-            {this.state.paused ? (
+      <div>
+        <Music_Player>
+          <audio
+            ref={this.audioRef}
+            src={this.state.selected}
+            volume={this.state.volume}
+            preload="auto"
+            onEnded={this.next.bind(this)}
+            onCanPlay={this.canPlay.bind(this)}
+            onTimeUpdate={this.timeUpdate.bind(this)}
+          ></audio>
+          <div id="previous-div">
+            {" "}
+            <Button_Previous
+              className="previous-button"
+              onClick={this.previous.bind(this)}
+            >
               <img
-                src="https://image.flaticon.com/icons/svg/254/254434.svg"
+                src="https://image.flaticon.com/icons/svg/254/254437.svg"
                 width="30px"
                 height="30%"
               />
-            ) : (
+            </Button_Previous>
+          </div>
+          <div id="play-pause-div">
+            {" "}
+            <ButtonPlay_Pause
+              className="playPause-button"
+              onClick={this.play_pause.bind(this)}
+            >
+              {this.state.paused ? (
+                <img
+                  src="https://image.flaticon.com/icons/svg/254/254434.svg"
+                  width="30px"
+                  height="30%"
+                />
+              ) : (
+                <img
+                  src="https://image.flaticon.com/icons/svg/633/633940.svg"
+                  width="30px"
+                  height="30%"
+                />
+              )}
+            </ButtonPlay_Pause>
+          </div>
+
+          <div id="next-div">
+            {" "}
+            <Button_Next className="next-button" onClick={this.next.bind(this)}>
               <img
-                src="https://image.flaticon.com/icons/svg/633/633940.svg"
+                src="https://image.flaticon.com/icons/svg/254/254428.svg"
                 width="30px"
                 height="30%"
               />
-            )}
-          </ButtonPlay_Pause>
-        </div>
+            </Button_Next>
+          </div>
 
-        <div id="next-div">
-          {" "}
-          <Button_Next className="next-button" onClick={this.next.bind(this)}>
+          <div id="shuffle-div">
+            {" "}
+            <Button_Shuffle
+              className="shuffle-button"
+              onClick={this.shuffle.bind(this)}
+            >
+              <img
+                src="https://image.flaticon.com/icons/svg/2057/2057590.svg"
+                width="30px"
+                height="30%"
+              />
+            </Button_Shuffle>
+          </div>
+          <div id="repeat-div">
+            <Button_Repeat
+              className="repeat-button"
+              onClick={this.repeat.bind(this)}
+            >
+              <img
+                src="https://image.flaticon.com/icons/svg/565/565272.svg"
+                width="30px"
+                height="30%"
+              />
+            </Button_Repeat>
+          </div>
+          <Album_Div id="album-cover">
             <img
-              src="https://image.flaticon.com/icons/svg/254/254428.svg"
-              width="30px"
-              height="30%"
+              id="queen-image"
+              src={
+                this.state.playList.length
+                  ? this.state.playList[this.state.trackNumber].album_cover
+                  : ""
+              }
+              width="27"
+              height="27"
             />
-          </Button_Next>
-        </div>
+          </Album_Div>
 
-        <div id="shuffle-div">
-          {" "}
-          <Button_Shuffle
-            className="shuffle-button"
-            onClick={this.shuffle.bind(this)}
-          >
-            <img
-              src="https://image.flaticon.com/icons/svg/2057/2057590.svg"
-              width="30px"
-              height="30%"
-            />
-          </Button_Shuffle>
-        </div>
-        <div id="repeat-div">
-          <Button_Repeat
-            className="repeat-button"
-            onClick={this.repeat.bind(this)}
-          >
-            <img
-              src="https://image.flaticon.com/icons/svg/565/565272.svg"
-              width="30px"
-              height="30%"
-            />
-          </Button_Repeat>
-        </div>
-        <Album_Div id="album-cover">
-          <img
-            id="queen-image"
-            src={
-              this.state.playList.length
-                ? this.state.playList[this.state.trackNumber].album_cover
-                : ""
-            }
-            width="27"
-            height="27"
-          />
-        </Album_Div>
-
-        <Small_Start_Time id="start-time"></Small_Start_Time>
-        <span id="seek-container">
-          <Progress_div>
-            <progress
-              ref={this.progressRef}
-              value={this.state.seekValue || 0}
-              max="100"
-              onClick={this.seek.bind(this)}
-            ></progress>
-          </Progress_div>
-        </span>
-        <Small_End_Time id="end-time"></Small_End_Time>
-
-        <div ref={this.volumeRef} id="volume-button">
-          {this.state.displayVolume && (
-            <Volume_div>
-              {" "}
-              <Volume_Hover
-                ref={this.volumeControlRef}
-                type="range"
-                min="0"
+          <Small_Start_Time id="start-time"></Small_Start_Time>
+          <span id="seek-container">
+            <Progress_div>
+              <progress
+                ref={this.progressRef}
+                value={this.state.seekValue || 0}
                 max="100"
-                step="1"
-                onChange={this.volumeBar.bind(this)}
-              ></Volume_Hover>
-            </Volume_div>
+                onClick={this.seek.bind(this)}
+              ></progress>
+            </Progress_div>
+          </span>
+          <Small_End_Time id="end-time"></Small_End_Time>
+
+          <div ref={this.volumeRef} id="volume-button">
+            {this.state.displayVolume && (
+              <Volume_div>
+                {" "}
+                <Volume_Hover
+                  ref={this.volumeControlRef}
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="1"
+                  onChange={this.volumeBar.bind(this)}
+                ></Volume_Hover>
+              </Volume_div>
+            )}
+            <Button_Volume
+              onMouseOver={this.displayVolume.bind(this)}
+              onClick={this.muteVolume.bind(this)}
+              className="volume-button"
+            >
+              {this.state.muted ? (
+                <img
+                  src="https://image.flaticon.com/icons/svg/727/727269.svg"
+                  width="30px"
+                  height="30%"
+                />
+              ) : (
+                <img
+                  src="https://image.flaticon.com/icons/svg/727/727240.svg"
+                  width="30px"
+                  height="30%"
+                />
+              )}
+            </Button_Volume>
+          </div>
+          {this.state.playList.length ? (
+            <Music_Info id="music-info">
+              {this.state.playList[this.state.trackNumber].music_title}
+              <small> by </small>
+              {this.state.playList[this.state.trackNumber].artist_name}
+            </Music_Info>
+          ) : (
+            ""
           )}
-          <Button_Volume
-            onMouseOver={this.displayVolume.bind(this)}
-            onClick={this.muteVolume.bind(this)}
-            className="volume-button"
-          >
-            {this.state.muted ? (
-              <img
-                src="https://image.flaticon.com/icons/svg/727/727269.svg"
-                width="30px"
-                height="30%"
-              />
-            ) : (
-              <img
-                src="https://image.flaticon.com/icons/svg/727/727240.svg"
-                width="30px"
-                height="30%"
+          <div className="playlist-div">
+            {this.state.displayList && (
+              <HoverMenu
+                playList={this.state.playList}
+                selected={this.state.selected}
               />
             )}
-          </Button_Volume>
-        </div>
-        {this.state.playList.length ? (
-          <Music_Info id="music-info">
-            {this.state.playList[this.state.trackNumber].music_title}
-            <small> by </small>
-            {this.state.playList[this.state.trackNumber].artist_name}
-          </Music_Info>
-        ) : (
-          ""
-        )}
-        <div className="playlist-div">
-          {this.state.displayList && (
-            <HoverMenu
-              playList={this.state.playList}
-              selected={this.state.selected}
-            />
-          )}
-          <Button_PlayList
-            onClick={this.showList.bind(this)}
-            className="playList-button"
-          >
-            <img
-              src="https://image.flaticon.com/icons/svg/565/565266.svg"
-              width="30px"
-              height="30%"
-            />
-          </Button_PlayList>
-        </div>
-      </Music_Player>
+            <Button_PlayList
+              onClick={this.showList.bind(this)}
+              className="playList-button"
+            >
+              <img
+                src="https://image.flaticon.com/icons/svg/565/565266.svg"
+                width="30px"
+                height="30%"
+              />
+            </Button_PlayList>
+          </div>
+        </Music_Player>
+      </div>
     );
   }
 }
