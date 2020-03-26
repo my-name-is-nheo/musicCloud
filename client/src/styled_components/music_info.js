@@ -10,7 +10,7 @@ const Music_Info = styled.p`
   color: #666;
   position: absolute;
   top: 0;
-  left: 1032px;
+  left: 1011px;
 `;
 
 export default Music_Info;
