@@ -4,7 +4,6 @@ const port = 4000;
 var cors = require("cors");
 const db = require("./database/index.js");
 const path = require("path");
-const config = require("../config.js");
 const SongHandler = require("./controller/index");
 
 // console.log(__dirname);

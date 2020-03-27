@@ -10,7 +10,7 @@ const Music_Player = styled.div`
   border-top: 1px solid #cecece;
   height: 70px;
   left: 0;
-  opacity: 1;
+  z-index: 1;
 `;
 
 export default Music_Player;
