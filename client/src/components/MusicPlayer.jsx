@@ -42,7 +42,7 @@ class MusicPlayerOnFooter extends React.Component {
   componentDidMount() {
     $.ajax({
       type: "GET",
-      url: "http://3.15.42.212:4000/getList",
+      url: "http://18.191.172.126:4000/getList",
       success: data => {
         console.log(data);
         this.setState({
