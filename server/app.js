@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 4000;
+const port = process.env.PORT | 4000;
 var cors = require("cors");
 const db = require("./database/index.js");
 const path = require("path");
@@ -17,6 +17,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/getList", SongHandler.getSong);
 
-app.listen(port, function() {
+app.listen(port, function () {
   console.log(`listening on port ${port}!`);
 });
