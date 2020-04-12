@@ -19,7 +19,7 @@ app.get("/getList", SongHandler.getSong);
 
 app.listen(port, function (err) {
   if (err) {
-    console.log(`${err} occured when connecting`);
+    throw err;
   }
   console.log(`listening on port ${port}!`);
 });
