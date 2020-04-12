@@ -27,4 +27,3 @@ function handleDisconnect() {
   });
 }
 handleDisconnect();
-module.exports = dbConnection;
