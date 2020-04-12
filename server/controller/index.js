@@ -3,7 +3,6 @@ const SongHandler = {
   getSong: (req, res, next) => {
     console.log(`here's a random queen song `);
     model.songs.getPlaylist((err, data) => {
-      // console.log(data);
       if (err) {
         throw err;
         console.log(err, "in line 9 controller");
