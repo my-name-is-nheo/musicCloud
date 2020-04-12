@@ -44,7 +44,6 @@ class MusicPlayerOnFooter extends React.Component {
       type: "GET",
       url: "/getList",
       success: (data) => {
-        console.log(data);
         this.setState({
           playList: data,
           selected: data[0].music_url,
