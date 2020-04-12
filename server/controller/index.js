@@ -9,7 +9,6 @@ const SongHandler = {
         console.log(err, "in line 9 controller");
       }
       res.send(data);
-      // console.log(JSON.stringify(data));
     });
   },
 };
