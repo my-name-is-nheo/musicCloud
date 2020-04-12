@@ -7,7 +7,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "build": "webpack --config webpack.config.js --watch",
+    "build": "webpack --config webpack.config.js",
     "test": "jest",
     "start": "nodemon server/app.js",
     "db-create": "mysql -u root < server/database/music_schema.sql",
