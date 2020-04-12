@@ -13,20 +13,5 @@ dbConnection.connect(function (err) {
     console.log("failed to connect to db: ", err);
   }
 });
-function startConnection() {
-  console.error("CONNECTING");
-  connection = dbConnection;
-  connection.connect(function (err) {
-    if (err) {
-      console.error("CONNECT FAILED", err.code);
-      startConnection();
-    } else console.error("CONNECTED");
-  });
-  connection.on("error", function (err) {
-    if (err.fatal) startConnection();
-  });
-}
-
-startConnection();
 
 module.exports = dbConnection;
