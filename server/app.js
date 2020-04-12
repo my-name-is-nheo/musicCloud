@@ -17,6 +17,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/getList", SongHandler.getSong);
 
-app.listen(port, function () {
+app.listen(port, function (err) {
+  if (err) {
+    console.log(`${err} occured when connecting`);
+  }
   console.log(`listening on port ${port}!`);
 });
