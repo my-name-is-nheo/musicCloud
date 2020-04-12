@@ -6,6 +6,7 @@ const SongHandler = {
       // console.log(data);
       if (err) {
         throw err;
+        console.log(err, "in line 9 controller");
       }
       res.send(data);
       // console.log(JSON.stringify(data));
