@@ -2632,8 +2632,6 @@ var MusicPlayerOnFooter = /*#__PURE__*/function (_React$Component) {
         type: "GET",
         url: "/getList",
         success: function success(data) {
-          console.log(data);
-
           _this2.setState({
             playList: data,
             selected: data[0].music_url
