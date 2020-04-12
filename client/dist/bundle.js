@@ -2630,7 +2630,7 @@ var MusicPlayerOnFooter = /*#__PURE__*/function (_React$Component) {
 
       __WEBPACK_IMPORTED_MODULE_7_jquery___default.a.ajax({
         type: "GET",
-        url: "http://localhost:4000/getList/",
+        url: "/getList",
         success: function success(data) {
           console.log(data);
 
