@@ -30,7 +30,7 @@ class MusicPlayerOnFooter extends React.Component {
       displayVolume: false,
       seekValue: 0,
       muted: true,
-      volume: 0.5
+      volume: 0.5,
     };
     this.audioRef = React.createRef();
     this.progressRef = React.createRef();
@@ -42,14 +42,14 @@ class MusicPlayerOnFooter extends React.Component {
   componentDidMount() {
     $.ajax({
       type: "GET",
-      url: "http://3.15.24.104:4000/getList",
-      success: data => {
+      url: "http://localhost:4000/getList/",
+      success: (data) => {
         console.log(data);
         this.setState({
           playList: data,
-          selected: data[0].music_url
+          selected: data[0].music_url,
         });
-      }
+      },
     });
   }
   //===============PREVIOUS BUTTON
@@ -87,7 +87,7 @@ class MusicPlayerOnFooter extends React.Component {
     this.setState({
       selected: src,
       playable: false,
-      trackNumber: trackNum
+      trackNumber: trackNum,
     });
   }
   //=================EventHandler
@@ -129,7 +129,7 @@ class MusicPlayerOnFooter extends React.Component {
       this.state.playList[this.state.trackNumber].music_url
     );
     this.setState({
-      playList: shuffle
+      playList: shuffle,
     });
     return this.audioRef.current.paused
       ? this.audioRef.current.play()
