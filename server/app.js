@@ -20,7 +20,7 @@ app.get("/getList", SongHandler.getSong);
 app.listen(port, function (err) {
   if (err) {
     throw err;
-    console.log(err);
+    console.log("app.listen", err);
   }
   console.log(`listening on port ${port}!`);
 });
