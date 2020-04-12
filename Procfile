@@ -1,1 +1,1 @@
-web: node server/app.js --watch
+web: nodemon server/app.js
