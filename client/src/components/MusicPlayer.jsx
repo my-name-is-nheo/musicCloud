@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import $ from "jquery";
 import HoverMenu from "./HoverMenu.jsx";
 import ButtonPlay_Pause from "../styled_components/buttons/play_pause.js";
@@ -44,6 +43,7 @@ class MusicPlayerOnFooter extends React.Component {
       type: "GET",
       url: "/getList",
       success: (data) => {
+        console.log(data);
         this.setState({
           playList: data,
           selected: data[0].music_url,

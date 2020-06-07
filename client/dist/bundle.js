@@ -104,7 +104,7 @@ module.exports = _taggedTemplateLiteral;
 /* unused harmony export useTheme */
 /* unused harmony export version */
 /* unused harmony export withTheme */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_is__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_is__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_is___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_is__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
@@ -2347,52 +2347,6 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-function checkDCE() {
-  /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */
-  if (
-    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' ||
-    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function'
-  ) {
-    return;
-  }
-  if (process.env.NODE_ENV !== 'production') {
-    // This branch is unreachable because this function is only called
-    // in production, but the condition is true only in development.
-    // Therefore if the branch is still here, dead code elimination wasn't
-    // properly applied.
-    // Don't change the message. React DevTools relies on it. Also make sure
-    // this message doesn't occur elsewhere in this function, or it will cause
-    // a false positive.
-    throw new Error('^_^');
-  }
-  try {
-    // Verify that the code above has been dead code eliminated (DCE'd).
-    __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(checkDCE);
-  } catch (err) {
-    // DevTools shouldn't crash React, no matter what.
-    // We should still report in case we break this code.
-    console.error(err);
-  }
-}
-
-if (process.env.NODE_ENV === 'production') {
-  // DCE check should happen before ReactDOM bundle executes so that
-  // DevTools can report bad minification during injection.
-  checkDCE();
-  module.exports = __webpack_require__(46);
-} else {
-  module.exports = __webpack_require__(45);
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2499,7 +2453,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2514,7 +2468,7 @@ if (process.env.NODE_ENV === 'production') {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2529,7 +2483,7 @@ if (process.env.NODE_ENV === 'production') {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2545,27 +2499,24 @@ if (process.env.NODE_ENV === 'production') {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__babel_runtime_helpers_inherits___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__babel_runtime_helpers_inherits__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_dom__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_jquery__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__HoverMenu_jsx__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styled_components_buttons_play_pause_js__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__styled_components_buttons_previous_button_js__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__styled_components_buttons_next_button_js__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__styled_components_buttons_shuffle_button_js__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__styled_components_buttons_repeat_button_js__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__styled_components_buttons_playlist_button_js__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__styled_components_buttons_volume_button_js__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__styled_components_container_style_js__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__styled_components_progress_div_js__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__styled_components_volume_hover_js__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__styled_components_music_info_js__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__styled_components_start_time_js__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__styled_components_end_time_js__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__styled_components_volume_div_js__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__styled_components_album_div_js__ = __webpack_require__(25);
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jquery__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__HoverMenu_jsx__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__styled_components_buttons_play_pause_js__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styled_components_buttons_previous_button_js__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__styled_components_buttons_next_button_js__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__styled_components_buttons_shuffle_button_js__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__styled_components_buttons_repeat_button_js__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__styled_components_buttons_playlist_button_js__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__styled_components_buttons_volume_button_js__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__styled_components_container_style_js__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__styled_components_progress_div_js__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__styled_components_volume_hover_js__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__styled_components_music_info_js__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__styled_components_start_time_js__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__styled_components_end_time_js__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__styled_components_volume_div_js__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__styled_components_album_div_js__ = __webpack_require__(25);
 
 
 
@@ -2628,10 +2579,12 @@ var MusicPlayerOnFooter = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      __WEBPACK_IMPORTED_MODULE_7_jquery___default.a.ajax({
+      __WEBPACK_IMPORTED_MODULE_6_jquery___default.a.ajax({
         type: "GET",
         url: "/getList",
         success: function success(data) {
+          console.log(data);
+
           _this2.setState({
             playList: data,
             selected: data[0].music_url
@@ -2828,7 +2781,7 @@ var MusicPlayerOnFooter = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement("div", null, __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__styled_components_container_style_js__["a" /* default */], null, __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement("audio", {
+      return __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement("div", null, __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_15__styled_components_container_style_js__["a" /* default */], null, __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement("audio", {
         ref: this.audioRef,
         src: this.state.selected,
         volume: this.state.volume,
@@ -2838,7 +2791,7 @@ var MusicPlayerOnFooter = /*#__PURE__*/function (_React$Component) {
         onTimeUpdate: this.timeUpdate.bind(this)
       }), __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement("div", {
         id: "previous-div"
-      }, " ", __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10__styled_components_buttons_previous_button_js__["a" /* default */], {
+      }, " ", __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__styled_components_buttons_previous_button_js__["a" /* default */], {
         className: "previous-button",
         onClick: this.previous.bind(this)
       }, __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement("img", {
@@ -2847,7 +2800,7 @@ var MusicPlayerOnFooter = /*#__PURE__*/function (_React$Component) {
         height: "30%"
       }))), __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement("div", {
         id: "play-pause-div"
-      }, " ", __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__styled_components_buttons_play_pause_js__["a" /* default */], {
+      }, " ", __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__styled_components_buttons_play_pause_js__["a" /* default */], {
         className: "playPause-button",
         onClick: this.play_pause.bind(this)
       }, this.state.paused ? __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement("img", {
@@ -2860,7 +2813,7 @@ var MusicPlayerOnFooter = /*#__PURE__*/function (_React$Component) {
         height: "30%"
       }))), __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement("div", {
         id: "next-div"
-      }, " ", __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11__styled_components_buttons_next_button_js__["a" /* default */], {
+      }, " ", __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10__styled_components_buttons_next_button_js__["a" /* default */], {
         className: "next-button",
         onClick: this.next.bind(this)
       }, __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement("img", {
@@ -2869,7 +2822,7 @@ var MusicPlayerOnFooter = /*#__PURE__*/function (_React$Component) {
         height: "30%"
       }))), __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement("div", {
         id: "shuffle-div"
-      }, " ", __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_12__styled_components_buttons_shuffle_button_js__["a" /* default */], {
+      }, " ", __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11__styled_components_buttons_shuffle_button_js__["a" /* default */], {
         className: "shuffle-button",
         onClick: this.shuffle.bind(this)
       }, __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement("img", {
@@ -2878,42 +2831,42 @@ var MusicPlayerOnFooter = /*#__PURE__*/function (_React$Component) {
         height: "30%"
       }))), __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement("div", {
         id: "repeat-div"
-      }, __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_13__styled_components_buttons_repeat_button_js__["a" /* default */], {
+      }, __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_12__styled_components_buttons_repeat_button_js__["a" /* default */], {
         className: "repeat-button",
         onClick: this.repeat.bind(this)
       }, __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement("img", {
         src: "https://image.flaticon.com/icons/svg/565/565272.svg",
         width: "30px",
         height: "30%"
-      }))), __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_23__styled_components_album_div_js__["a" /* default */], {
+      }))), __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_22__styled_components_album_div_js__["a" /* default */], {
         id: "album-cover"
       }, __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement("img", {
         id: "queen-image",
         src: this.state.playList.length ? this.state.playList[this.state.trackNumber].album_cover : "",
         width: "27",
         height: "27"
-      })), __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_20__styled_components_start_time_js__["a" /* default */], {
+      })), __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_19__styled_components_start_time_js__["a" /* default */], {
         id: "start-time"
       }), __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement("span", {
         id: "seek-container"
-      }, __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_17__styled_components_progress_div_js__["a" /* default */], null, __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement("progress", {
+      }, __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__styled_components_progress_div_js__["a" /* default */], null, __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement("progress", {
         ref: this.progressRef,
         value: this.state.seekValue || 0,
         max: "100",
         onClick: this.seek.bind(this)
-      }))), __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_21__styled_components_end_time_js__["a" /* default */], {
+      }))), __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_20__styled_components_end_time_js__["a" /* default */], {
         id: "end-time"
       }), __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement("div", {
         ref: this.volumeRef,
         id: "volume-button"
-      }, this.state.displayVolume && __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_22__styled_components_volume_div_js__["a" /* default */], null, " ", __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_18__styled_components_volume_hover_js__["a" /* default */], {
+      }, this.state.displayVolume && __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_21__styled_components_volume_div_js__["a" /* default */], null, " ", __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_17__styled_components_volume_hover_js__["a" /* default */], {
         ref: this.volumeControlRef,
         type: "range",
         min: "0",
         max: "100",
         step: "1",
         onChange: this.volumeBar.bind(this)
-      })), __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_15__styled_components_buttons_volume_button_js__["a" /* default */], {
+      })), __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_14__styled_components_buttons_volume_button_js__["a" /* default */], {
         onMouseOver: this.displayVolume.bind(this),
         onClick: this.muteVolume.bind(this),
         className: "volume-button"
@@ -2925,14 +2878,14 @@ var MusicPlayerOnFooter = /*#__PURE__*/function (_React$Component) {
         src: "https://image.flaticon.com/icons/svg/727/727240.svg",
         width: "30px",
         height: "30%"
-      }))), this.state.playList.length ? __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_19__styled_components_music_info_js__["a" /* default */], {
+      }))), this.state.playList.length ? __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_18__styled_components_music_info_js__["a" /* default */], {
         id: "music-info"
       }, this.state.playList[this.state.trackNumber].music_title, __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement("small", null, " by "), this.state.playList[this.state.trackNumber].artist_name) : "", __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement("div", {
         className: "playlist-div"
-      }, this.state.displayList && __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__HoverMenu_jsx__["a" /* default */], {
+      }, this.state.displayList && __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__HoverMenu_jsx__["a" /* default */], {
         playList: this.state.playList,
         selected: this.state.selected
-      }), __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_14__styled_components_buttons_playlist_button_js__["a" /* default */], {
+      }), __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_13__styled_components_buttons_playlist_button_js__["a" /* default */], {
         onClick: this.showList.bind(this),
         className: "playList-button"
       }, __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement("img", {
@@ -2947,6 +2900,52 @@ var MusicPlayerOnFooter = /*#__PURE__*/function (_React$Component) {
 }(__WEBPACK_IMPORTED_MODULE_5_react___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["a"] = (MusicPlayerOnFooter);
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+function checkDCE() {
+  /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */
+  if (
+    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' ||
+    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function'
+  ) {
+    return;
+  }
+  if (process.env.NODE_ENV !== 'production') {
+    // This branch is unreachable because this function is only called
+    // in production, but the condition is true only in development.
+    // Therefore if the branch is still here, dead code elimination wasn't
+    // properly applied.
+    // Don't change the message. React DevTools relies on it. Also make sure
+    // this message doesn't occur elsewhere in this function, or it will cause
+    // a false positive.
+    throw new Error('^_^');
+  }
+  try {
+    // Verify that the code above has been dead code eliminated (DCE'd).
+    __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(checkDCE);
+  } catch (err) {
+    // DevTools shouldn't crash React, no matter what.
+    // We should still report in case we break this code.
+    console.error(err);
+  }
+}
+
+if (process.env.NODE_ENV === 'production') {
+  // DCE check should happen before ReactDOM bundle executes so that
+  // DevTools can report bad minification during injection.
+  checkDCE();
+  module.exports = __webpack_require__(46);
+} else {
+  module.exports = __webpack_require__(45);
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
 /* 10 */
@@ -3813,9 +3812,9 @@ var unitlessKeys = {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_MusicPlayer_jsx__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_MusicPlayer_jsx__ = __webpack_require__(8);
 
 
 
@@ -4289,7 +4288,7 @@ var Volume_Hover = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* defaul
 "use strict";
 
 
-var reactIs = __webpack_require__(7);
+var reactIs = __webpack_require__(6);
 
 /**
  * Copyright 2015, Yahoo! Inc.
@@ -15040,8 +15039,8 @@ if (process.env.NODE_ENV !== "production") {
 
 var React = __webpack_require__(3);
 var _assign = __webpack_require__(4);
-var Scheduler = __webpack_require__(8);
-var checkPropTypes = __webpack_require__(6);
+var Scheduler = __webpack_require__(7);
+var checkPropTypes = __webpack_require__(5);
 var tracing = __webpack_require__(55);
 
 var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED; // Prevent newer renderers from RTE when used with older react package versions.
@@ -40087,7 +40086,7 @@ exports.version = ReactVersion;
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(3),n=__webpack_require__(4),r=__webpack_require__(8);function u(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return"Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}if(!aa)throw Error(u(227));
+var aa=__webpack_require__(3),n=__webpack_require__(4),r=__webpack_require__(7);function u(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return"Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}if(!aa)throw Error(u(227));
 function ba(a,b,c,d,e,f,g,h,k){var l=Array.prototype.slice.call(arguments,3);try{b.apply(c,l)}catch(m){this.onError(m)}}var da=!1,ea=null,fa=!1,ha=null,ia={onError:function(a){da=!0;ea=a}};function ja(a,b,c,d,e,f,g,h,k){da=!1;ea=null;ba.apply(ia,arguments)}function ka(a,b,c,d,e,f,g,h,k){ja.apply(this,arguments);if(da){if(da){var l=ea;da=!1;ea=null}else throw Error(u(198));fa||(fa=!0,ha=l)}}var la=null,ma=null,na=null;
 function oa(a,b,c){var d=a.type||"unknown-event";a.currentTarget=na(c);ka(d,b,void 0,a);a.currentTarget=null}var pa=aa.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;pa.hasOwnProperty("ReactCurrentDispatcher")||(pa.ReactCurrentDispatcher={current:null});pa.hasOwnProperty("ReactCurrentBatchConfig")||(pa.ReactCurrentBatchConfig={suspense:null});
 var qa=/^(.*)[\\\/]/,v="function"===typeof Symbol&&Symbol.for,ra=v?Symbol.for("react.element"):60103,sa=v?Symbol.for("react.portal"):60106,ta=v?Symbol.for("react.fragment"):60107,ua=v?Symbol.for("react.strict_mode"):60108,va=v?Symbol.for("react.profiler"):60114,wa=v?Symbol.for("react.provider"):60109,xa=v?Symbol.for("react.context"):60110,ya=v?Symbol.for("react.concurrent_mode"):60111,za=v?Symbol.for("react.forward_ref"):60112,Aa=v?Symbol.for("react.suspense"):60113,Ba=v?Symbol.for("react.suspense_list"):
@@ -40603,7 +40602,7 @@ if (process.env.NODE_ENV !== "production") {
 'use strict';
 
 var _assign = __webpack_require__(4);
-var checkPropTypes = __webpack_require__(6);
+var checkPropTypes = __webpack_require__(5);
 
 var ReactVersion = '16.13.0';
 

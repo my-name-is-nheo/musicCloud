@@ -21,3 +21,47 @@ progress[value]::-webkit-progress-value {
   background-color: orange;
   transition: opacity 0.15s;
 }
+body {
+  background-color: #314040;
+}
+h1 {
+  color: orange;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 186px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 1;
+  text-align: center;
+}
+h2 {
+  color: orange;
+  font-family: "Open Sans", sans-serif;
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 32px;
+  margin: 0 0 72px;
+  text-align: center;
+}
+.queen-p {
+  color: orange;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  margin: 0 0 24px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+p {
+  color: #685206;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 32px;
+  margin: 0 0 72px;
+  text-align: center;
+}
+#mercury {
+  position: absolute;
+  top: 116%;
+  right: 3%;
+}
