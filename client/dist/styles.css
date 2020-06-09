@@ -62,6 +62,11 @@ p {
 }
 #mercury {
   position: absolute;
-  top: 116%;
+  top: 111%;
   right: 3%;
+}
+#final {
+  position: absolute;
+  top: 112%;
+  right: 29%;
 }
