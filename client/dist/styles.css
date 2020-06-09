@@ -42,15 +42,6 @@ h2 {
   margin: 0 0 72px;
   text-align: center;
 }
-.queen-p {
-  color: orange;
-  font-family: "Helvetica Neue", sans-serif;
-  font-size: 14px;
-  line-height: 24px;
-  margin: 0 0 24px;
-  text-align: justify;
-  text-justify: inter-word;
-}
 p {
   color: #685206;
   font-family: "Helvetica Neue", sans-serif;
@@ -60,13 +51,23 @@ p {
   margin: 0 0 72px;
   text-align: center;
 }
+.image-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  position: relative;
+  top: -45px;
+}
+.queen-p {
+  color: orange;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  margin: 0 0 24px;
+  text-align: justify;
+  text-justify: inter-word;
+}
 #mercury {
-  position: absolute;
-  top: 111%;
-  right: 3%;
 }
 #final {
-  position: absolute;
-  top: 112%;
-  right: 29%;
 }
