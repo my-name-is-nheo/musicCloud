@@ -1,6 +1,6 @@
 # Project Name
 
-> Project description
+> MusiCloud
 
 ## Related Projects
 
