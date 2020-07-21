@@ -69,10 +69,10 @@
   "main": ".eslintrc.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FEC-group-Zelda/fec-service-nick.git"
+    "url": "git+https://github.com/my-name-is-nheo/musicCloud.git"
   },
   "bugs": {
-    "url": "https://github.com/FEC-group-Zelda/fec-service-nick/issues"
+    "url": "https://github.com/my-name-is-nheo/musicCloud/issues"
   },
-  "homepage": "https://github.com/FEC-group-Zelda/fec-service-nick#readme"
+  "homepage": "https://github.com/my-name-is-nheo/musicCloud#readme"
 }
